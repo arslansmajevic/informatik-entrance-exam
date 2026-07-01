@@ -1,0 +1,35 @@
+{
+  "title": "Part 2: Computer Science",
+  "description": "Fundamental computer science and programming concepts.",
+  "questions": [
+    {
+      "id": "cs-1",
+      "question": "Which data structure works on a Last-In-First-Out (LIFO) principle?",
+      "options": ["Queue", "Stack", "Linked list", "Hash map"],
+      "correct": [1],
+      "explanation": "A stack pushes and pops from the same end (LIFO)."
+    },
+    {
+      "id": "cs-2",
+      "question": "Which of the following are programming languages?",
+      "options": ["Python", "HTTP", "Java", "HTML"],
+      "correct": [0, 2],
+      "explanation": "Python and Java are programming languages. HTTP is a protocol and HTML is a markup language."
+    },
+    {
+      "id": "cs-3",
+      "question": "What is the binary representation of the decimal number 5?",
+      "options": ["100", "101", "110", "111"],
+      "correct": [1],
+      "explanation": "5 = 4 + 1 = 101 in binary."
+    },
+    {
+      "id": "cs-4",
+      "question": "What does the diagram below illustrate? (example of an image question)",
+      "image": "images/example.png",
+      "options": ["A binary tree", "A sorting network", "A state machine", "A neural network"],
+      "correct": [0],
+      "explanation": "Replace images/example.png with your own image to use this question."
+    }
+  ]
+}
