@@ -1,0 +1,138 @@
+{
+  "title": "Teil 4: Erkennung & Entscheidungsbäume",
+  "description": "Ja/Nein-Fragen, Entscheidungsbäume, ausbalancierte Strategien, binäre und sequentielle Suche. Fragen basieren auf Kapitel 8 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "eb01",
+      "question": "Beim 'Erkennungsdienst' rät man eine von mehreren Personen durch geschickte Ja/Nein-Fragen. Welche Struktur entsteht dabei?",
+      "options": [
+        "Ein Entscheidungsbaum.",
+        "Ein vollständiger Graph.",
+        "Eine Hashtabelle.",
+        "Eine sortierte Liste ohne Verzweigungen."
+      ],
+      "correct": [0],
+      "explanation": "Jede Ja/Nein-Frage verzweigt die Möglichkeiten; es entsteht ein Entscheidungsbaum."
+    },
+    {
+      "id": "eb02",
+      "question": "Um aus 16 gleich wahrscheinlichen Identitäten eine zu bestimmen, benötigt man bei optimaler Fragestrategie wie viele Ja/Nein-Fragen?",
+      "options": [
+        "Genau 4 (denn log₂16 = 4).",
+        "Genau 16.",
+        "Genau 8.",
+        "Genau 2."
+      ],
+      "correct": [0],
+      "explanation": "Jede gute Frage halbiert die Menge: 16 → 8 → 4 → 2 → 1, also log₂16 = 4 Fragen."
+    },
+    {
+      "id": "eb03",
+      "question": "Welche Fragestrategie ist im Mittel optimal?",
+      "options": [
+        "Eine ausbalancierte Strategie, bei der jede Frage die verbleibenden Möglichkeiten möglichst halbiert.",
+        "Eine, die zuerst nur nach einer einzelnen konkreten Person fragt.",
+        "Eine, die immer nur eine Möglichkeit auf einmal ausschließt.",
+        "Eine völlig zufällige Fragereihenfolge."
+      ],
+      "correct": [0],
+      "explanation": "Halbieren minimiert die durchschnittliche Fragenzahl; ein ausbalancierter Entscheidungsbaum ist optimal."
+    },
+    {
+      "id": "eb04",
+      "question": "Was passiert, wenn man den Entscheidungsbaum bewusst 'unbalanciert' baut (eine Möglichkeit sehr früh abfragt)?",
+      "options": [
+        "Man spart in einem Fall eine Frage, zahlt das aber in anderen Fällen mit mehr Fragen teurer.",
+        "Alle Fälle werden gleichzeitig schneller.",
+        "Die Gesamtzahl der Fragen bleibt in jedem Fall unverändert.",
+        "Der Baum wird dadurch immer optimal."
+      ],
+      "correct": [0],
+      "explanation": "Unbalancieren verkürzt einen Pfad, verlängert aber andere. Im Mittel wird die Strategie schlechter."
+    },
+    {
+      "id": "eb05",
+      "question": "Sind bei der Erkennung auch zusammengesetzte Fragen erlaubt, z. B. 'Hat die Person braune ODER schwarze Haare?'",
+      "options": [
+        "Ja, solche kombinierten Fragen sind erlaubt und können die Menge geschickt aufteilen.",
+        "Nein, nur Fragen nach genau einem Merkmal sind erlaubt.",
+        "Nein, ODER-Fragen sind grundsätzlich verboten.",
+        "Nur wenn die Antwort immer 'Ja' lautet."
+      ],
+      "correct": [0],
+      "explanation": "Auch komplexe/kombinierte Ja/Nein-Fragen sind zulässig; sie helfen, die Menge ausgewogen zu teilen."
+    },
+    {
+      "id": "eb06",
+      "question": "Die binäre Suche prüft immer das mittlere Element. Welche Voraussetzung muss dafür erfüllt sein?",
+      "options": [
+        "Die Daten müssen sortiert vorliegen.",
+        "Die Daten müssen unsortiert sein.",
+        "Es dürfen nur zwei Elemente vorhanden sein.",
+        "Die Daten müssen als Hashtabelle gespeichert sein."
+      ],
+      "correct": [0],
+      "explanation": "Binäre Suche funktioniert nur auf sortierten Daten, weil sie anhand des Mittelwerts die Suchhälfte bestimmt."
+    },
+    {
+      "id": "eb07",
+      "question": "Wie viele Schritte braucht die binäre Suche in n sortierten Elementen im schlechtesten Fall (Größenordnung)?",
+      "options": [
+        "Etwa log₂n.",
+        "Etwa n.",
+        "Etwa n².",
+        "Etwa n/2 in jedem Fall."
+      ],
+      "correct": [0],
+      "explanation": "Jeder Schritt halbiert den Suchbereich, daher werden nur etwa log₂n Schritte benötigt."
+    },
+    {
+      "id": "eb08",
+      "question": "Verdoppelt man die Datenmenge, wie ändert sich die Zahl der Schritte bei der binären Suche?",
+      "options": [
+        "Es kommt nur EIN zusätzlicher Schritt hinzu.",
+        "Die Schrittzahl verdoppelt sich.",
+        "Die Schrittzahl vervierfacht sich.",
+        "Die Schrittzahl bleibt exakt gleich."
+      ],
+      "correct": [0],
+      "explanation": "Wegen des logarithmischen Wachstums erfordert eine Verdopplung der Daten nur einen zusätzlichen Halbierungsschritt."
+    },
+    {
+      "id": "eb09",
+      "question": "Worin unterscheidet sich die sequentielle (lineare) Suche von der binären Suche?",
+      "options": [
+        "Die sequentielle Suche prüft der Reihe nach jedes Element (bis zu n Schritte) und braucht keine Sortierung.",
+        "Die sequentielle Suche ist immer schneller als die binäre.",
+        "Die sequentielle Suche benötigt zwingend sortierte Daten.",
+        "Beide Verfahren sind identisch."
+      ],
+      "correct": [0],
+      "explanation": "Die lineare Suche geht alle Elemente durch (Aufwand bis zu n), funktioniert aber auf unsortierten Daten. Binäre Suche ist schneller (log n), verlangt aber Sortierung."
+    },
+    {
+      "id": "eb10",
+      "question": "Welche Aussagen über den Zusammenhang von Entscheidungsbaum und binärer Suche sind richtig?",
+      "options": [
+        "Beide beruhen auf dem Prinzip, den Suchraum bei jedem Schritt zu halbieren.",
+        "Die Höhe des Baumes / die Schrittzahl liegt in beiden Fällen bei etwa log₂n.",
+        "Beide funktionieren grundsätzlich nur auf unsortierten Daten.",
+        "Beide haben eine Laufzeit von O(n²)."
+      ],
+      "correct": [0, 1],
+      "explanation": "Sowohl der ausbalancierte Entscheidungsbaum als auch die binäre Suche halbieren pro Schritt und brauchen ~log₂n Schritte. Binäre Suche verlangt sortierte Daten; O(n²) trifft nicht zu."
+    },
+    {
+      "id": "eb11",
+      "question": "Warum liefert das Halbierungsprinzip einen so großen Vorteil bei großen Datenmengen?",
+      "options": [
+        "Weil die Zahl der Schritte nur logarithmisch mit der Datenmenge wächst.",
+        "Weil dabei überhaupt keine Vergleiche nötig sind.",
+        "Weil die Daten dadurch verschlüsselt werden.",
+        "Weil der Speicherbedarf auf Null sinkt."
+      ],
+      "correct": [0],
+      "explanation": "Logarithmisches Wachstum bedeutet, dass selbst riesige Datenmengen in sehr wenigen Schritten durchsucht werden können."
+    }
+  ]
+}

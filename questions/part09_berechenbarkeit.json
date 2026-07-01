@@ -1,0 +1,246 @@
+{
+  "title": "Teil 9: Berechenbarkeit & Grenzen des Computers",
+  "description": "Nicht praktisch lösbare (NP-vollständige) vs. nicht berechenbare Probleme, Affenpuzzle, Branch and Bound, Halteproblem, Turing, Domino-Problem, Terminierung. Fragen basieren auf Kapitel 15 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "be01",
+      "question": "Edsger Dijkstra sagte sinngemäß: 'Informatik hat ungefähr so viel mit Computern zu tun wie Astronomie mit Teleskopen.' Was will diese Aussage betonen?",
+      "options": [
+        "Informatik ist eine Wissenschaft mit eigenen Ideen; der Computer ist nur ein Werkzeug (mit Grenzen).",
+        "Computer sind für die Informatik völlig unwichtig.",
+        "Astronomen brauchen keine Teleskope.",
+        "Informatik besteht nur aus dem Bau von Computern."
+      ],
+      "correct": [0],
+      "explanation": "Wie das Teleskop für die Astronomie ist der Computer nur ein Werkzeug der Informatik – und selbst das beste Werkzeug hat Grenzen."
+    },
+    {
+      "id": "be02",
+      "question": "Das 'Affenpuzzle' wird mit wachsender Teilezahl extrem schnell schwerer. Zu welcher Problemklasse gehört es?",
+      "options": [
+        "Zu den nicht praktisch berechenbaren (NP-vollständigen) Problemen.",
+        "Zu den nicht entscheidbaren Problemen.",
+        "Zu den in O(n) lösbaren Problemen.",
+        "Zu den logarithmisch lösbaren Problemen."
+      ],
+      "correct": [0],
+      "explanation": "Das Affenpuzzle ist NP-vollständig ('nicht praktisch berechenbar'): Es ist prinzipiell lösbar, aber der Aufwand explodiert mit der Größe."
+    },
+    {
+      "id": "be03",
+      "question": "Was bedeutet es, wenn ein Problem 'nicht skaliert'?",
+      "options": [
+        "Zur Lösung einer doppelt so großen Aufgabe braucht man weit mehr als die doppelte Zeit.",
+        "Das Problem lässt sich immer in konstanter Zeit lösen.",
+        "Das Problem verkleinert sich mit der Zeit von selbst.",
+        "Das Problem hat gar keine Lösung."
+      ],
+      "correct": [0],
+      "explanation": "Nicht skalierende Probleme wachsen im Aufwand überproportional; im schlimmsten Fall (exponentiell) macht schon ein zusätzliches Element sie praktisch unlösbar."
+    },
+    {
+      "id": "be04",
+      "question": "Für das Affenpuzzle gibt es bei n Teilen n!·4^n mögliche Anordnungen (jedes Teil in 4 Drehungen). Was zeigt diese Formel?",
+      "options": [
+        "Die Zahl der Möglichkeiten wächst so extrem, dass reines Ausprobieren schon bei wenigen Teilen aussichtslos wird.",
+        "Dass das Problem in linearer Zeit lösbar ist.",
+        "Dass Drehungen keine Rolle spielen.",
+        "Dass es immer genau eine Lösung gibt."
+      ],
+      "correct": [0],
+      "explanation": "n!·4^n wächst gewaltig; schon ein 4×4-Puzzle wäre durch bloßes Ausprobieren selbst mit weltweiter Rechenleistung nicht in vertretbarer Zeit lösbar."
+    },
+    {
+      "id": "be05",
+      "question": "Was bedeutet die Technik 'Branch and Bound' beim geschickten Ausprobieren?",
+      "options": [
+        "'Branch' = sich zu Möglichkeiten verzweigen; 'Bound' = früh erkennen, dass ein Zweig sicher falsch ist, und umkehren.",
+        "'Branch' = die Lösung raten; 'Bound' = sie speichern.",
+        "Alle Möglichkeiten ohne Ausnahme durchprobieren.",
+        "Das Problem einfach ignorieren."
+      ],
+      "correct": [0],
+      "explanation": "Branch and Bound verzweigt in mögliche Teillösungen (Branch) und schneidet aussichtslose Zweige früh ab (Bound), um Arbeit zu sparen."
+    },
+    {
+      "id": "be06",
+      "question": "Beim Affenpuzzle passt beim Anlegen eines Teils nur etwa 1 von 8 Symbolen. Wie hilft das der Branch-and-Bound-Suche?",
+      "options": [
+        "Schon nach wenigen gelegten Teilen erkennt man Sackgassen und muss nicht alle vollständigen Anordnungen ausprobieren.",
+        "Es macht das Problem exponentiell schwerer.",
+        "Es beweist, dass es keine Lösung gibt.",
+        "Es sortiert die Teile automatisch."
+      ],
+      "correct": [0],
+      "explanation": "Weil pro Anlegeschritt nur ~1/8 der Teile passt, führen viele Zweige rasch in eine Sackgasse und können früh abgeschnitten werden."
+    },
+    {
+      "id": "be07",
+      "question": "Was ist der zentrale Unterschied zwischen 'nicht praktisch berechenbar' und 'nicht berechenbar (unentscheidbar)'?",
+      "options": [
+        "Nicht praktisch berechenbare Probleme sind prinzipiell lösbar, dauern aber zu lange; nicht berechenbare Probleme kann kein Computer je grundsätzlich lösen.",
+        "Beide Begriffe bedeuten dasselbe.",
+        "Nicht berechenbare Probleme sind nur etwas langsamer.",
+        "Nicht praktisch berechenbare Probleme haben nie eine Lösung."
+      ],
+      "correct": [0],
+      "explanation": "Der Unterschied ist 'lösbar-aber-teuer' (NP-vollständig) gegenüber 'prinzipiell unlösbar' (unentscheidbar)."
+    },
+    {
+      "id": "be08",
+      "question": "Das 'Domino-Problem' (Fliesenleger: Kann man mit einem Kachelsatz beliebig große Flächen lückenlos auslegen?) ist in der theoretischen Informatik ...",
+      "options": [
+        "nicht entscheidbar – es gibt Eingaben, für die kein Computer 'JA' oder 'NEIN' bestimmen kann.",
+        "in linearer Zeit lösbar.",
+        "immer mit 'JA' beantwortbar.",
+        "nur für kleine Kachelsätze schwierig, sonst trivial."
+      ],
+      "correct": [0],
+      "explanation": "Das Domino-/Kachelungsproblem ist unentscheidbar: Für gewisse Kachelsätze (z. B. Robinsons nichtperiodische Kachelung) terminiert kein allgemeines Verfahren mit JA/NEIN."
+    },
+    {
+      "id": "be09",
+      "question": "Was bedeutet 'Terminierung' eines Programms?",
+      "options": [
+        "Dass das Programm irgendwann anhält und mit einem Ergebnis fertig wird.",
+        "Dass das Programm gelöscht wird.",
+        "Dass das Programm verschlüsselt wird.",
+        "Dass das Programm unendlich weiterläuft."
+      ],
+      "correct": [0],
+      "explanation": "Terminierung heißt, dass die Berechnung endet. Ein nicht terminierendes Programm hängt z. B. in einer Endlosschleife fest."
+    },
+    {
+      "id": "be10",
+      "question": "Das Halteproblem fragt: Kann ein Programm HÄLTS? für jedes beliebige Programm entscheiden, ob dieses immer anhält? Wie lautet das Ergebnis?",
+      "options": [
+        "Nein – ein solches Programm HÄLTS? kann es prinzipiell nicht geben.",
+        "Ja, mit genügend Rechenzeit ist das immer möglich.",
+        "Ja, aber nur auf Quantencomputern.",
+        "Nur für Programme mit weniger als 100 Zeilen."
+      ],
+      "correct": [0],
+      "explanation": "Das Halteproblem ist unentscheidbar: Es kann kein allgemeines Programm HÄLTS? geben, das für beliebige Programme korrekt 'hält an / hält nicht an' bestimmt."
+    },
+    {
+      "id": "be11",
+      "question": "Der Unentscheidbarkeitsbeweis des Halteproblems funktioniert nach welchem Prinzip?",
+      "options": [
+        "Durch Widerspruch: Man konstruiert ein Programm, das genau dann anhält, wenn HÄLTS? sagt, es halte NICHT an – beide Annahmen führen zum Widerspruch.",
+        "Durch Ausprobieren aller Programme.",
+        "Durch Messung der Laufzeit.",
+        "Durch Häufigkeitsanalyse der Befehle."
+      ],
+      "correct": [0],
+      "explanation": "Man baut HÄLTS? in ein Programm C ein, das sich gegenteilig verhält. Beide Thesen (C hält an / hält nicht an) widersprechen sich – also kann HÄLTS? nicht existieren."
+    },
+    {
+      "id": "be12",
+      "question": "Welcher Wissenschaftler bewies mithilfe seines Maschinenmodells, dass das Halteproblem nicht berechenbar ist?",
+      "options": [
+        "Alan Turing (mit der 'Turing-Maschine').",
+        "Richard Bellman.",
+        "Tony Hoare.",
+        "Paul Bachmann."
+      ],
+      "correct": [0],
+      "explanation": "Alan Turing (1912–1954) schuf die Turing-Maschine und bewies damit die Unlösbarkeit des Halteproblems."
+    },
+    {
+      "id": "be13",
+      "question": "Warum ist die Turing-Maschine als Modell so bedeutsam?",
+      "options": [
+        "Sie steht stellvertretend für alle realen Computer, sodass an ihr grundsätzliche Grenzen des Berechenbaren untersucht werden können.",
+        "Sie ist der schnellste je gebaute Computer.",
+        "Sie kann als einzige Maschine das Halteproblem lösen.",
+        "Sie ist ein spezieller Verschlüsselungsapparat."
+      ],
+      "correct": [0],
+      "explanation": "Turing zeigte, dass sein einfaches Modell stellvertretend für reale Rechner steht; was es nicht kann, kann kein Computer."
+    },
+    {
+      "id": "be14",
+      "question": "Warum kann selbst ein Mensch das Halteproblem nicht durch ein ALLGEMEINES Verfahren lösen?",
+      "options": [
+        "Gäbe es ein allgemeines Verfahren, könnte man es einem Computer übertragen – was aber nachweislich unmöglich ist.",
+        "Weil Menschen zu langsam rechnen.",
+        "Weil Menschen keine Programme lesen können.",
+        "Das stimmt nicht – Menschen haben ein allgemeines Verfahren."
+      ],
+      "correct": [0],
+      "explanation": "Ein allgemeines Lösungsverfahren ließe sich automatisieren; da das unmöglich ist, existiert es auch für Menschen nicht. Menschen können aber viele EINZELfälle kreativ entscheiden."
+    },
+    {
+      "id": "be15",
+      "question": "Bei sicherheitskritischer Software (Flugzeuge, Kernkraftwerke) besteht Validierungspflicht (Nachweis der Fehlerfreiheit). Was folgt daraus laut Kapitel?",
+      "options": [
+        "Da ein Computer nicht einmal Endlosschleifen allgemein erkennen kann, müssen für die Validierung Menschen (Informatiker/Mathematiker) einspringen.",
+        "Die Validierung kann vollständig automatisch erfolgen.",
+        "Validierung ist überflüssig.",
+        "Nur Quantencomputer können validieren."
+      ],
+      "correct": [0],
+      "explanation": "Weil schon das Halteproblem unentscheidbar ist, ist der noch schwierigere Korrektheitsnachweis nicht vollständig automatisierbar; menschliche Kreativität bleibt nötig."
+    },
+    {
+      "id": "be16",
+      "question": "Welche Probleme aus den vorherigen Kapiteln nennt das Buch als Beispiele, die zwar mehr als linear wachsen, aber trotzdem praktisch lösbar bleiben?",
+      "options": [
+        "Das Sortieren von Karten.",
+        "Die Berechnung des kürzesten Weges (z. B. Frankfurt–München).",
+        "Das Halteproblem.",
+        "Das Domino-Problem des Fliesenlegers."
+      ],
+      "correct": [0, 1],
+      "explanation": "Sortieren und kürzeste Wege wachsen etwa quadratisch, bleiben aber praktisch lösbar. Halte- und Domino-Problem sind dagegen grundsätzlich unentscheidbar."
+    },
+    {
+      "id": "be17",
+      "question": "Wie kann man mit einem prinzipiell (praktisch) unlösbaren Problem sinnvoll umgehen?",
+      "options": [
+        "Das Problem so umformulieren/vereinfachen, dass es lösbar wird und die Lösung trotzdem weiterhilft (z. B. Jokerkarten beim Affenpuzzle).",
+        "Es immer wieder mit mehr Rechenzeit versuchen, bis es gelingt.",
+        "Behaupten, es sei gelöst.",
+        "Das Problem grundsätzlich ignorieren."
+      ],
+      "correct": [0],
+      "explanation": "Man passt die Problemstellung an: Schon zwei 'Jokerkarten' machen ein 6×6-Affenpuzzle in Sekunden lösbar. So wird aus einem unpraktikablen ein handhabbares Problem."
+    },
+    {
+      "id": "be18",
+      "question": "Was leistet ein 'teilautomatischer Beweiser'?",
+      "options": [
+        "Er analysiert weite Teile eines Beweises/einer Software automatisch und gibt schwierige Teilprobleme an einen Menschen ab.",
+        "Er beweist jedes beliebige Problem vollautomatisch.",
+        "Er ersetzt den Menschen vollständig.",
+        "Er erzeugt nur Zufallszahlen."
+      ],
+      "correct": [0],
+      "explanation": "Teilautomatische Beweiser kombinieren die Rechenkraft des Computers mit menschlicher Intelligenz für die kniffligen Teilschritte."
+    },
+    {
+      "id": "be19",
+      "question": "Für das Lösen eines beliebigen NP-vollständigen Problems in polynomieller Zeit (oder den Beweis, dass es nicht geht) ist ein Preis ausgesetzt. Welcher?",
+      "options": [
+        "1.000.000 US-Dollar (eines der Millennium-Probleme des Clay Mathematics Institute).",
+        "Ein Nobelpreis in Physik.",
+        "Kein Preis, es ist rein akademisch.",
+        "Eine lebenslange Rente vom Buchverlag."
+      ],
+      "correct": [0],
+      "explanation": "Die P-vs-NP-Frage ist eines der Millennium-Probleme; das Clay Mathematics Institute hat dafür 1.000.000 US-Dollar ausgelobt."
+    },
+    {
+      "id": "be20",
+      "question": "Zusammenfassend: Warum ist der Computer NICHT 'allmächtig'?",
+      "options": [
+        "Manche Probleme dauern schlicht zu lange (praktisch unlösbar), andere kann er aus Prinzip nie lösen (unentscheidbar).",
+        "Weil er zu wenig Speicher hat.",
+        "Weil ihm die richtige Programmiersprache fehlt.",
+        "Er IST allmächtig, wenn man ihn nur richtig programmiert."
+      ],
+      "correct": [0],
+      "explanation": "Es gibt zwei prinzipielle Grenzen: praktisch unlösbare (zu aufwändige) und grundsätzlich nicht berechenbare Probleme. Beides bleibt dem Computer verwehrt."
+    }
+  ]
+}

@@ -4,20 +4,27 @@ Each `*.json` file in this directory describes **one part of the exam**. The app
 loads every file automatically (sorted by file name) and shows one entry per
 part in the sidebar.
 
+The current question banks are written in **German** and are based on the book
+*Abenteuer Informatik* (Jens Gallenbacher). There is one part per chapter, e.g.
+shortest paths, sorting, the knapsack problem, recognition/decision trees,
+networks/routing, hashing, IT security/cryptography, error correction and
+computability. Each question comes with an `explanation` that is also shown by
+the per-question **"Antwort anzeigen"** (show answer) button in the app.
+
 ## File format
 
 ```json
 {
-  "title": "Part 1: Mathematics",
-  "description": "Optional text shown under the part title.",
+  "title": "Teil 1: Kürzeste Wege & Graphen",
+  "description": "Optionaler Text unter dem Titel des Prüfungsteils.",
   "questions": [
     {
-      "id": "math-1",
-      "question": "What is 7 + 8?",
+      "id": "kw01",
+      "question": "Woraus besteht ein Graph?",
       "image": "images/optional.png",
-      "options": ["13", "14", "15", "16"],
-      "correct": [2],
-      "explanation": "Optional text shown after grading."
+      "options": ["Knoten und Kanten", "Zeilen und Spalten", "Bits und Bytes"],
+      "correct": [0],
+      "explanation": "Ein Graph besteht aus Knoten und Kanten."
     }
   ]
 }
@@ -41,7 +48,14 @@ part in the sidebar.
 
 If `correct` contains more than one index, the question automatically switches
 to checkboxes and the user must select **all** correct answers to score the
-point. A single index renders as radio buttons.
+point. A single index renders as radio buttons. Every question always has at
+least one correct answer.
+
+### Show answer
+
+In the app each question has a **"Antwort anzeigen"** button that reveals the
+correct answer(s) and the `explanation` for that single question, independently
+of the final grading. The button toggles the answer on and off.
 
 ### Images
 

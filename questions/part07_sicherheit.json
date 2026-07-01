@@ -1,0 +1,330 @@
+{
+  "title": "Teil 7: IT-Sicherheit & Kryptographie",
+  "description": "Symmetrische/asymmetrische Verschlüsselung, Schlüsselaustausch, Man-in-the-Middle, Zertifikate/CA, digitale Signatur, RSA, Hybridverfahren, Steganographie, Phishing. Fragen basieren auf Kapitel 12 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "se01",
+      "question": "Die Skytale der Spartaner ordnet die Buchstaben einer Nachricht lediglich um. Um welchen Chiffretyp handelt es sich?",
+      "options": [
+        "Eine Transpositions-/Vertauschungschiffre.",
+        "Eine Substitutions-/Ersetzungschiffre.",
+        "Ein asymmetrisches Verfahren.",
+        "Eine Hashfunktion."
+      ],
+      "correct": [0],
+      "explanation": "Bei der Skytale bleiben die Zeichen gleich, nur ihre Reihenfolge ändert sich – das ist eine Transpositions-(Vertauschungs-)Chiffre."
+    },
+    {
+      "id": "se02",
+      "question": "Die Caesar-Chiffre verschiebt jeden Buchstaben um eine feste Zahl. Welcher Chiffretyp ist das, und wie viele Schlüssel gibt es?",
+      "options": [
+        "Eine Substitutions-/Ersetzungschiffre mit 26 möglichen Schlüsseln.",
+        "Eine Transpositionschiffre mit 2 Schlüsseln.",
+        "Ein asymmetrisches Verfahren mit Millionen Schlüsseln.",
+        "Eine Hashfunktion ohne Schlüssel."
+      ],
+      "correct": [0],
+      "explanation": "Caesar ersetzt jeden Buchstaben durch einen verschobenen – eine Substitutionschiffre. Im lateinischen Alphabet gibt es 26 mögliche Verschiebungen."
+    },
+    {
+      "id": "se03",
+      "question": "Wie kann man eine Caesar-Chiffre brechen?",
+      "options": [
+        "Durch Ausprobieren aller (26) Schlüssel (Brute-Force).",
+        "Durch Häufigkeitsanalyse (im Deutschen ist 'E' der häufigste Buchstabe).",
+        "Man kann sie prinzipiell nicht brechen.",
+        "Nur mit einem Quantencomputer."
+      ],
+      "correct": [0, 1],
+      "explanation": "Wegen der wenigen Schlüssel genügt Brute-Force; alternativ verrät die Buchstabenhäufigkeit (E häufig) den Schlüssel."
+    },
+    {
+      "id": "se04",
+      "question": "Welche Maßnahmen erschweren eine Häufigkeitsanalyse?",
+      "options": [
+        "Häufige Buchstaben durch mehrere verschiedene Codes ersetzen (homophone Verschlüsselung).",
+        "Den Text vorher mit Huffman komprimieren, um die Häufigkeiten anzugleichen.",
+        "Den Schlüssel jedem offen mitteilen.",
+        "Die Nachricht einfach zweimal senden."
+      ],
+      "correct": [0, 1],
+      "explanation": "Mehrere Codes pro häufigem Buchstaben und vorherige Kompression verwischen die statistischen Auffälligkeiten und erschweren die Häufigkeitsanalyse."
+    },
+    {
+      "id": "se05",
+      "question": "Was kennzeichnet die SYMMETRISCHE Verschlüsselung (z. B. Caesar)?",
+      "options": [
+        "Zum Ver- und Entschlüsseln wird derselbe Schlüssel benutzt.",
+        "Es werden zwei völlig verschiedene Schlüssel benutzt.",
+        "Es ist kein Schlüssel nötig.",
+        "Der öffentliche Schlüssel entschlüsselt, der private verschlüsselt."
+      ],
+      "correct": [0],
+      "explanation": "Symmetrisch heißt: derselbe Schlüssel dient zum Ver- und Entschlüsseln. Das Kernproblem ist dabei der sichere Schlüsselaustausch."
+    },
+    {
+      "id": "se06",
+      "question": "Was ist das Hauptproblem symmetrischer Verschlüsselung?",
+      "options": [
+        "Der geheime Schlüssel muss sicher zwischen den Partnern ausgetauscht werden.",
+        "Sie ist grundsätzlich viel zu langsam.",
+        "Sie benötigt zwingend einen Quantencomputer.",
+        "Sie kann Nachrichten nur verschlüsseln, nicht entschlüsseln."
+      ],
+      "correct": [0],
+      "explanation": "Beide Seiten brauchen denselben Schlüssel – ihn sicher zu übermitteln, ist die zentrale Schwierigkeit."
+    },
+    {
+      "id": "se07",
+      "question": "Was kennzeichnet die ASYMMETRISCHE Verschlüsselung?",
+      "options": [
+        "Es gibt zwei zusammengehörige Schlüssel (öffentlich und privat); aus dem einen lässt sich der andere praktisch nicht berechnen.",
+        "Es wird ein einziger Schlüssel für alles benutzt.",
+        "Die Schlüssel müssen vorab geheim ausgetauscht werden.",
+        "Sie funktioniert nur für Nachrichten aus einem Wort."
+      ],
+      "correct": [0],
+      "explanation": "Asymmetrisch nutzt ein Schlüsselpaar (öffentlich/privat). Man kann sie in beliebiger Reihenfolge anwenden, und der private lässt sich nicht praktikabel aus dem öffentlichen ableiten."
+    },
+    {
+      "id": "se08",
+      "question": "Ziel VERTRAULICHKEIT: Karl will Vera eine geheime Nachricht schicken, die nur sie lesen kann. Welchen Schlüssel benutzt er?",
+      "options": [
+        "Veras ÖFFENTLICHEN Schlüssel – nur Veras privater Schlüssel kann dann entschlüsseln.",
+        "Veras PRIVATEN Schlüssel.",
+        "Seinen eigenen privaten Schlüssel.",
+        "Gar keinen Schlüssel."
+      ],
+      "correct": [0],
+      "explanation": "Für Vertraulichkeit verschlüsselt man mit dem öffentlichen Schlüssel des Empfängers; nur dessen privater Schlüssel kann die Nachricht öffnen."
+    },
+    {
+      "id": "se09",
+      "question": "Ziel AUTHENTIZITÄT: Wie 'unterschreibt' Vera eine Nachricht, sodass jeder ihre Echtheit prüfen, sie aber nicht fälschen kann?",
+      "options": [
+        "Sie verschlüsselt (eine Prüfsumme) mit ihrem PRIVATEN Schlüssel; jeder kann mit ihrem öffentlichen Schlüssel prüfen.",
+        "Sie verschlüsselt mit dem öffentlichen Schlüssel des Empfängers.",
+        "Sie verschlüsselt mit einem Zufallsschlüssel, den niemand kennt.",
+        "Sie hängt einfach ihren Namen im Klartext an."
+      ],
+      "correct": [0],
+      "explanation": "Bei der digitalen Signatur verschlüsselt der Absender mit seinem PRIVATEN Schlüssel. Jeder kann mit dem öffentlichen Schlüssel verifizieren, aber niemand kann die Signatur fälschen."
+    },
+    {
+      "id": "se10",
+      "question": "Beim Man-in-the-Middle-Angriff schleust sich ein Angreifer (Spike) beim Schlüsselaustausch ein. Wie geht er vor?",
+      "options": [
+        "Er ersetzt den ausgetauschten öffentlichen Schlüssel durch seinen eigenen und verschlüsselt die Nachrichten neu weiter, um unentdeckt mitzulesen.",
+        "Er errät den privaten Schlüssel durch Nachdenken.",
+        "Er löscht einfach alle Nachrichten.",
+        "Er kann ausschließlich symmetrische Verfahren angreifen."
+      ],
+      "correct": [0],
+      "explanation": "Der Angreifer tauscht während des ersten Schlüsselaustauschs den öffentlichen Schlüssel gegen seinen eigenen und leitet – neu verschlüsselt – weiter, um nicht aufzufallen."
+    },
+    {
+      "id": "se11",
+      "question": "Wodurch wird der Man-in-the-Middle-Angriff verhindert?",
+      "options": [
+        "Durch eine Zertifizierungsinstanz (CA), die die Zugehörigkeit eines öffentlichen Schlüssels zu seinem Eigentümer beglaubigt.",
+        "Dadurch, dass man nur nachts kommuniziert.",
+        "Durch häufigeres Senden derselben Nachricht.",
+        "Durch längere Passwörter im Klartext."
+      ],
+      "correct": [0],
+      "explanation": "Eine CA verbürgt, dass ein öffentlicher Schlüssel wirklich zum angegebenen Eigentümer gehört; damit wird ein untergeschobener Schlüssel erkennbar."
+    },
+    {
+      "id": "se12",
+      "question": "Was ist ein digitales 'Zertifikat'?",
+      "options": [
+        "Ein Datensatz (öffentlicher Schlüssel + Eigentümername + Gültigkeit …), der von der CA mit ihrem privaten Schlüssel signiert wurde.",
+        "Ein geheimes Passwort des Nutzers.",
+        "Eine zufällige Zahlenfolge ohne Bedeutung.",
+        "Die private Schlüsseldatei des Nutzers."
+      ],
+      "correct": [0],
+      "explanation": "Die CA packt öffentlichen Schlüssel, Eigentümer, Gültigkeitsdauer usw. zusammen und signiert diesen Datensatz mit ihrem privaten Schlüssel – das ist das Zertifikat."
+    },
+    {
+      "id": "se13",
+      "question": "Wie prüft ein Rechner, ob ein Zertifikat echt ist?",
+      "options": [
+        "Er entschlüsselt es mit dem öffentlichen Schlüssel der CA; gelingt das, wurde es mit deren privatem Schlüssel signiert und ist echt.",
+        "Er vergleicht es mit einem Zufallswert.",
+        "Er verschlüsselt es erneut mit seinem eigenen Schlüssel.",
+        "Er fragt den Angreifer direkt."
+      ],
+      "correct": [0],
+      "explanation": "Lässt sich das Zertifikat mit dem öffentlichen CA-Schlüssel entziffern, muss es mit dem (nur der CA bekannten) privaten Schlüssel erzeugt worden sein – also echt."
+    },
+    {
+      "id": "se14",
+      "question": "Woher kennt der Browser/das Betriebssystem anfangs den öffentlichen Schlüssel der wichtigen CAs?",
+      "options": [
+        "Diese Schlüssel sind bereits fest im Browser bzw. Betriebssystem eingebaut.",
+        "Der Nutzer muss sie jedes Mal per Post anfordern.",
+        "Sie werden zufällig neu berechnet.",
+        "Sie stehen offen im Internet für jeden zum Ändern."
+      ],
+      "correct": [0],
+      "explanation": "Die öffentlichen Schlüssel der bekannten CAs sind in Browsern/Betriebssystemen vorinstalliert, sodass die Vertrauenskette von Anfang an funktioniert."
+    },
+    {
+      "id": "se15",
+      "question": "Worauf beruht die Sicherheit des RSA-Verfahrens?",
+      "options": [
+        "Darauf, dass es sehr aufwändig ist, eine große Zahl in ihre Primfaktoren zu zerlegen.",
+        "Darauf, dass niemand die Caesar-Scheibe kennt.",
+        "Darauf, dass Nachrichten sehr kurz sind.",
+        "Darauf, dass der öffentliche Schlüssel geheim gehalten wird."
+      ],
+      "correct": [0],
+      "explanation": "RSA (Rivest, Shamir, Adleman) nutzt die praktische Schwierigkeit der Primfaktorzerlegung großer Zahlen; daraus lässt sich der private Schlüssel nicht leicht ableiten."
+    },
+    {
+      "id": "se16",
+      "question": "Die Zahl 50.065.021 ist das Produkt zweier Primzahlen. Wie kann man diese finden, und warum sichert das RSA?",
+      "options": [
+        "Durch Probedivision durch Primzahlen (5.003 · 10.007); bei sehr großen Zahlen dauert das aber praktisch zu lange.",
+        "Durch einfaches Halbieren der Zahl.",
+        "Durch Sortieren der Ziffern.",
+        "Gar nicht – Primfaktorzerlegung ist unmöglich."
+      ],
+      "correct": [0],
+      "explanation": "50.065.021 = 5.003 · 10.007. Möglich ist die Zerlegung nur durch Probieren; bei genügend großen Zahlen ist das selbst für Computer zu aufwändig – darauf beruht RSA."
+    },
+    {
+      "id": "se17",
+      "question": "Warum kombiniert man in der Praxis asymmetrische und symmetrische Verschlüsselung (Hybridverfahren)?",
+      "options": [
+        "Man tauscht zunächst asymmetrisch einen symmetrischen Sitzungsschlüssel aus und verschlüsselt danach symmetrisch – das ist deutlich schneller.",
+        "Weil symmetrische Verfahren gar keinen Schlüssel brauchen.",
+        "Weil asymmetrische Verfahren besonders schnell rechnen.",
+        "Weil man so ganz ohne Schlüssel auskommt."
+      ],
+      "correct": [0],
+      "explanation": "Asymmetrische Verfahren sind rechenintensiv. Man nutzt sie nur, um einen symmetrischen Sitzungsschlüssel sicher zu übergeben, und verschlüsselt dann schnell symmetrisch."
+    },
+    {
+      "id": "se18",
+      "question": "Warum muss der symmetrische Sitzungsschlüssel jedes Mal neu und zufällig erzeugt werden?",
+      "options": [
+        "Ein wiederverwendeter Schlüssel könnte abgefangen und für spätere Nachrichten missbraucht werden; ein schlechter Zufallsgenerator ließe ihn zudem erraten.",
+        "Weil ein fester Schlüssel schneller ist.",
+        "Weil Zufallszahlen gesetzlich vorgeschrieben sind.",
+        "Damit die Nachricht länger wird."
+      ],
+      "correct": [0],
+      "explanation": "Ein fester Schlüssel wäre ein Sicherheitsrisiko. Deshalb ist gute Zufälligkeit kritisch – ein schwacher Generator erlaubt es, den Schlüssel zu raten."
+    },
+    {
+      "id": "se19",
+      "question": "Bei einer digitalen Signatur einer Überweisung könnte ein Angreifer die (echte) signierte Nachricht abfangen und einfach ERNEUT senden (Replay). Wie verhindert man das?",
+      "options": [
+        "Durch einen genauen Zeitstempel in der signierten Nachricht, sodass Duplikate erkannt werden.",
+        "Indem man die Nachricht gar nicht signiert.",
+        "Indem man den privaten Schlüssel veröffentlicht.",
+        "Indem man die Überweisung mehrfach ausführt."
+      ],
+      "correct": [0],
+      "explanation": "Ein präziser Zeitstempel (fester Bestandteil signierter Nachrichten) macht eine identische, doppelt eingereichte Überweisung erkennbar."
+    },
+    {
+      "id": "se20",
+      "question": "Was ist der grundlegende Unterschied zwischen VERSCHLÜSSELUNG und STEGANOGRAPHIE?",
+      "options": [
+        "Verschlüsselung macht eine Nachricht unlesbar; Steganographie versteckt ihre Existenz überhaupt.",
+        "Beides ist exakt dasselbe.",
+        "Steganographie macht Nachrichten unlesbar, Verschlüsselung versteckt sie.",
+        "Steganographie funktioniert nur mit Zahlen."
+      ],
+      "correct": [0],
+      "explanation": "Bei der Verschlüsselung sieht man, dass etwas geheim ist, kann es aber nicht lesen. Steganographie ('steganos' = versteckt) verbirgt, dass es überhaupt eine Nachricht gibt."
+    },
+    {
+      "id": "se21",
+      "question": "Welche der folgenden sind typische steganographische Verstecke?",
+      "options": [
+        "Zusätzliche Leerzeichen an bestimmten Stellen in einem Text.",
+        "Fast unsichtbare kleine Punkte an definierten Stellen in Bildern.",
+        "Winzige zusätzliche Pausen an leisen Stellen einer Audiodatei.",
+        "Ein gut sichtbarer roter Warnhinweis auf der ersten Seite."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Steganographie verbirgt Nachrichten unauffällig (Leerzeichen, kleine Bildpunkte, Mikropausen in Audio). Ein sichtbarer Warnhinweis wäre das Gegenteil von versteckt."
+    },
+    {
+      "id": "se22",
+      "question": "Wofür werden digitale Wasserzeichen (eine steganographische Technik) in der Praxis oft eingesetzt?",
+      "options": [
+        "Zum Nachweis der Urheberschaft und zum Aufspüren illegal verbreiteter Kopien.",
+        "Zum schnelleren Sortieren von Dateien.",
+        "Zum Verschlüsseln von Passwörtern.",
+        "Zum Komprimieren von Videos."
+      ],
+      "correct": [0],
+      "explanation": "Unsichtbare individuelle Markierungen (Wasserzeichen) beweisen die Urheberschaft und lassen sich zum Rückverfolgen von Leaks nutzen; da versteckt, müssen sie erst gefunden werden, ehe man sie entfernen könnte."
+    },
+    {
+      "id": "se23",
+      "question": "Eine Phishing-Mail gibt vor, von Ihrer Bank zu stammen. Woran ist sie oft erkennbar bzw. was ist die Absicht?",
+      "options": [
+        "Ziel ist, Sie über eine gefälschte (ähnlich aussehende) Webadresse zur Eingabe Ihrer Geheimdaten zu verleiten.",
+        "Die Bank fordert Sie darin auf, sich über einen mitgeschickten Link 'normal anzumelden'.",
+        "Seriöse Anbieter versenden solche Aufforderungen mit Rechtschreibfehlern normalerweise nicht.",
+        "Phishing-Mails werden nur an Personen mit Online-Konto verschickt und nie an andere."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Phishing lockt über gefälschte, ähnlich aussehende Adressen zur Dateneingabe. Seriöse Banken schreiben solche fehlerhaften Aufforderungen nicht – und die Betrüger verschicken die Mails wahllos, auch an Leute ohne Konto."
+    },
+    {
+      "id": "se24",
+      "question": "Warum sollte man für ein kleines Online-Shop-Konto nicht dasselbe Passwort wie fürs Online-Banking verwenden?",
+      "options": [
+        "Wird ein leicht erbeutetes Passwort gestohlen, probieren Angreifer es häufig auch bei anderen (wichtigeren) Diensten aus.",
+        "Weil längere Passwörter langsamer sind.",
+        "Weil Banken keine Passwörter erlauben.",
+        "Weil Shops Passwörter im Klartext an alle senden."
+      ],
+      "correct": [0],
+      "explanation": "Angreifer testen erbeutete Passwörter oft bei anderen Diensten. Ein einheitliches Passwort gefährdet dann auch das Bankkonto."
+    },
+    {
+      "id": "se25",
+      "question": "Der Begriff 'Hacker' wird im Kapitel differenziert dargestellt. Welche Aussage trifft zu?",
+      "options": [
+        "Viele Hacker sind legal tätige Fachleute, die Sicherheitslücken aufspüren, bevor Kriminelle sie ausnutzen.",
+        "Jeder Hacker ist per Definition ein Krimineller.",
+        "Hacker können ausschließlich symmetrische Verfahren angreifen.",
+        "Hacking ist ohne Fachwissen möglich."
+      ],
+      "correct": [0],
+      "explanation": "Ein 'Heer legaler Hacker' testet die eigenen Systeme, um Schwachstellen vor den 'echten' Angreifern zu finden. Umgehen von Schutz ist nicht per se kriminell."
+    },
+    {
+      "id": "se26",
+      "question": "Welche wesentlichen Sicherheitsziele werden im Kapitel genannt?",
+      "options": [
+        "Vertraulichkeit (nur Berechtigte können lesen).",
+        "Authentizität (die Herkunft/Echtheit ist gesichert).",
+        "Anonymität (z. B. bei elektronischem Geld).",
+        "Maximale Dateigröße jeder Nachricht."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Genannt werden Vertraulichkeit, Authentizität und – als Ausblick – Anonymität (etwa für elektronische Währungen). Dateigröße ist kein Sicherheitsziel."
+    },
+    {
+      "id": "se27",
+      "question": "Bei der asymmetrischen Kommunikation vom Anbieter zum Kunden gilt laut Kapitel:",
+      "options": [
+        "Sie ist authentifiziert, aber nicht vertraulich (jeder Mithörer kann sie lesen).",
+        "Sie ist vertraulich, aber nicht authentifiziert.",
+        "Sie ist weder authentifiziert noch lesbar.",
+        "Sie ist immer vollständig anonym."
+      ],
+      "correct": [0],
+      "explanation": "Verschlüsselt der Anbieter mit seinem privaten Schlüssel, kann jeder mit dem öffentlichen Schlüssel mitlesen (nicht vertraulich), aber die Echtheit ist gesichert (authentifiziert)."
+    }
+  ]
+}

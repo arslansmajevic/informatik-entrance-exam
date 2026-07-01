@@ -5,9 +5,19 @@ informatics entrance exam. Pick a part of the exam, answer multiple-choice
 questions (single or multiple correct answers, optionally with images) and get
 an instant score.
 
+The included question bank is written in **German** and based on the book
+*Abenteuer Informatik* (Jens Gallenbacher). It contains 160+ questions spread
+over one part per chapter: shortest paths & graphs, sorting & complexity, the
+knapsack problem & dynamic programming, recognition & decision trees, networks
+& routing, hashing, IT security & cryptography, error detection/correction and
+computability. The questions mix theory with applied, tracing, comparison and
+misconception tasks.
+
 ## Features
 
 - Multiple-choice questions with **one or many** correct answers.
+- Per-question **"Antwort anzeigen"** (show answer) button that reveals the
+  correct answer(s) and explanation for a single question on demand.
 - Optional **images** attached to questions.
 - Questions organised into **parts**, one JSON file per part.
 - No authentication or registration — just run it and answer.
@@ -17,9 +27,16 @@ an instant score.
 ```
 app.py                     # Streamlit application
 quiz/loader.py             # Loads & validates question files
-questions/                 # One JSON file per exam part
-  part1_mathematics.json
-  part2_computer_science.json
+questions/                 # One JSON file per exam part (German)
+  part01_kuerzeste_wege.json
+  part02_sortieren.json
+  part03_rucksack.json
+  part04_erkennung.json
+  part05_netzwerke.json
+  part06_hashing.json
+  part07_sicherheit.json
+  part08_fehlerkorrektur.json
+  part09_berechenbarkeit.json
   README.md                # Question file format reference
 images/                    # Images referenced by questions
 index.html                 # stlite entry page for GitHub Pages
