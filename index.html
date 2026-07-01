@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Informatik Entrance Exam</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.8.1/build/stlite.css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #stlite-loading {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        padding: 2rem;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="stlite-loading">
+        Loading the quiz… The first load downloads the Python runtime in your
+        browser and can take a little while.
+      </div>
+    </div>
+
+    <script type="module">
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.8.1/build/stlite.js";
+
+      // Resolve everything relative to this page so it works under any
+      // GitHub Pages sub-path (e.g. /informatik-entrance-exam/).
+      const base = new URL(".", import.meta.url);
+
+      const manifest = await fetch(new URL("manifest.json", base)).then((res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to load manifest.json: ${res.status}`);
+        }
+        return res.json();
+      });
+
+      // stlite fetches each file (binary-safe) from its URL and mounts it onto
+      // the in-browser virtual file system at the given path.
+      const files = {};
+      for (const path of manifest.files) {
+        files[path] = { url: new URL(path, base).href };
+      }
+
+      mount(
+        {
+          entrypoint: manifest.entrypoint ?? "app.py",
+          requirements: [],
+          files,
+          streamlitConfig: {
+            "client.toolbarMode": "viewer",
+          },
+        },
+        document.getElementById("root"),
+      );
+    </script>
+  </body>
+</html>
