@@ -1,0 +1,246 @@
+{
+  "title": "Teil 2: Sortieren & Komplexität",
+  "description": "Sortierverfahren, Vergleiche und Vertauschungen, Laufzeitwachstum, Groß-O-Notation, Quicksort, Tournament-Sort, Proxmap-Sort. Fragen basieren auf Kapitel 2 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "so01",
+      "question": "Was ist beim Sortieren von Karten die 'Problemgröße'?",
+      "options": [
+        "Die Anzahl der zu sortierenden Objekte (Karten).",
+        "Die Farbe der Karten.",
+        "Die Größe des Tisches.",
+        "Die Anzahl der beteiligten Personen."
+      ],
+      "correct": [0],
+      "explanation": "Die Problemgröße beim Sortieren ist die Anzahl der Elemente, die geordnet werden sollen."
+    },
+    {
+      "id": "so02",
+      "question": "Warum wächst der Aufwand beim Sortieren stärker als linear – anders als etwa beim Abwaschen von Geschirr?",
+      "options": [
+        "Elemente müssen miteinander verglichen werden; die Zahl der nötigen Vergleiche steigt überproportional mit der Elementzahl.",
+        "Sortieren lässt sich beliebig parallelisieren, Abwaschen nicht.",
+        "Sortieren ist immer linear, das Buch irrt sich.",
+        "Karten sind schwerer als Teller."
+      ],
+      "correct": [0],
+      "explanation": "Beim Abwasch ist der Aufwand pro Teller unabhängig von den anderen (linear/parallelisierbar). Beim Sortieren hängen die Elemente voneinander ab, sodass der Aufwand schneller als linear wächst."
+    },
+    {
+      "id": "so03",
+      "question": "In einem Computer gilt: Jede Speicherstelle kann genau einen Wert halten. Wie viele Operationen braucht das VERTAUSCHEN zweier Werte deshalb mindestens?",
+      "options": [
+        "Drei (unter Verwendung eines Zwischenspeichers).",
+        "Eine.",
+        "Zwei.",
+        "Null, Vertauschen ist gratis."
+      ],
+      "correct": [0],
+      "explanation": "Da jede Speicherstelle nur einen Wert hält, braucht man einen Zwischenspeicher: a→temp, b→a, temp→b, also drei Bewegungen."
+    },
+    {
+      "id": "so04",
+      "question": "Selection-Sort benötigt etwa 0,6·n² und Bubblesort etwa 1,3·n² Operationen. Welche Aussage ist korrekt?",
+      "options": [
+        "Beide gehören zur gleichen Komplexitätsklasse O(n²), obwohl die konstanten Faktoren verschieden sind.",
+        "Selection-Sort ist eine andere Komplexitätsklasse als Bubblesort.",
+        "Bubblesort ist linear, Selection-Sort quadratisch.",
+        "Beide sind logarithmisch."
+      ],
+      "correct": [0],
+      "explanation": "Für die Komplexitätsklasse zählt nur der höchste Term (n²); konstante Vorfaktoren (0,6 bzw. 1,3) werden weggelassen. Beide sind O(n²)."
+    },
+    {
+      "id": "so05",
+      "question": "Welche Eigenschaft macht Bubblesort trotz O(n²) in einem Spezialfall attraktiv?",
+      "options": [
+        "Er vergleicht nur unmittelbar benachbarte Elemente – günstig, wenn Daten nur nacheinander/lokal zugänglich sind (z. B. Schreib-Lese-Kopf).",
+        "Er ist der schnellste bekannte Sortieralgorithmus.",
+        "Er braucht überhaupt keine Vergleiche.",
+        "Er funktioniert nur auf bereits sortierten Daten."
+      ],
+      "correct": [0],
+      "explanation": "Bubblesort tauscht nur Nachbarn. Das ist vorteilhaft, wenn ein Zugriff auf weit entfernte Elemente teuer ist (etwa bei einem Lesekopf auf einer Platte)."
+    },
+    {
+      "id": "so06",
+      "question": "Warum ändert eine schnellere Maschine (z. B. doppelte Taktrate) nichts an der Komplexitätsklasse eines Algorithmus?",
+      "options": [
+        "Eine schnellere Maschine wirkt nur wie ein konstanter Faktor; der höchste Exponent im Wachstum bleibt unverändert.",
+        "Weil schnellere Maschinen die Zahl der Vergleiche verringern.",
+        "Weil die Komplexität von der Programmiersprache abhängt.",
+        "Weil sich dadurch n² in n verwandelt."
+      ],
+      "correct": [0],
+      "explanation": "Hardware beschleunigt nur um einen konstanten Faktor. Das Wachstumsverhalten (z. B. n²) und damit die Klasse bleiben gleich."
+    },
+    {
+      "id": "so07",
+      "question": "Das Prinzip 'divide et impera' (Teile und herrsche) funktioniert nur, wenn ...",
+      "options": [
+        "sich das Problem in unabhängige Teilprobleme zerlegen lässt.",
+        "das Problem sehr klein ist.",
+        "man einen sehr schnellen Computer besitzt.",
+        "die Daten bereits sortiert sind."
+      ],
+      "correct": [0],
+      "explanation": "Teile-und-herrsche setzt voraus, dass die Teilprobleme unabhängig voneinander gelöst werden können."
+    },
+    {
+      "id": "so08",
+      "question": "Der Tournament-Sort (K.-o.-Turnier) hat welche Komplexität, und warum?",
+      "options": [
+        "O(n·log n), weil der Turnierbaum eine Höhe von etwa log₂n hat.",
+        "O(n²), weil jeder gegen jeden spielt.",
+        "O(n), weil jedes Element nur einmal betrachtet wird.",
+        "O(2^n), weil sich die Spiele verdoppeln."
+      ],
+      "correct": [0],
+      "explanation": "In einem K.-o.-Baum mit n Teilnehmern ist die Höhe etwa log₂n; daraus ergibt sich die Gesamtkomplexität O(n·log n)."
+    },
+    {
+      "id": "so09",
+      "question": "Welche Aussagen über Quicksort sind laut Kapitel korrekt?",
+      "options": [
+        "Quicksort wurde von Tony Hoare (1960) entwickelt.",
+        "Im Durchschnitt liegt seine Laufzeit bei O(n·log n).",
+        "Er gilt als eines der effizientesten vergleichsbasierten Sortierverfahren.",
+        "Quicksort hat immer eine Laufzeit von O(n)."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Quicksort (Hoare, 1960) hat im Mittel O(n·log n) und gilt als sehr effizient. Eine garantierte lineare Laufzeit O(n) hat er nicht."
+    },
+    {
+      "id": "so10",
+      "question": "Gibt es ein vergleichsbasiertes Sortierverfahren, das grundsätzlich schneller ist als O(n·log n)?",
+      "options": [
+        "Nein, O(n·log n) ist die untere Schranke für Sortieren, das nur auf Vergleichen beruht.",
+        "Ja, Bubblesort ist schneller.",
+        "Ja, jedes gute Verfahren erreicht O(log n).",
+        "Ja, mit genügend Speicher immer O(1)."
+      ],
+      "correct": [0],
+      "explanation": "Für reine Vergleichssortierer ist O(n·log n) beweisbar die beste erreichbare Komplexität."
+    },
+    {
+      "id": "so11",
+      "question": "Ein Struktogramm (Nassi-Shneiderman-Diagramm) dient wozu?",
+      "options": [
+        "Zur strukturierten grafischen Darstellung des Ablaufs eines Algorithmus.",
+        "Zum Messen der Laufzeit in Sekunden.",
+        "Zur Verschlüsselung von Daten.",
+        "Zum Speichern von Zahlen im Arbeitsspeicher."
+      ],
+      "correct": [0],
+      "explanation": "Struktogramme (Nassi-Shneiderman) stellen den Kontrollfluss eines Algorithmus grafisch und strukturiert dar."
+    },
+    {
+      "id": "so12",
+      "question": "Proxmap-Sort kann eine Laufzeit von O(n) erreichen. Unter welcher Voraussetzung?",
+      "options": [
+        "Die Verteilung der Werte muss (näherungsweise) bekannt sein, damit man die Zielposition direkt abschätzen kann.",
+        "Die Daten müssen bereits vollständig sortiert vorliegen.",
+        "Es dürfen nur zwei verschiedene Werte vorkommen.",
+        "Die Werte müssen negativ sein."
+      ],
+      "correct": [0],
+      "explanation": "Proxmap-Sort schätzt aus dem Wert die ungefähre Zielposition. Das gelingt nur, wenn die Werteverteilung bekannt ist."
+    },
+    {
+      "id": "so13",
+      "question": "Welche Verteilung führt bei Proxmap-Sort tendenziell zu WENIGEN Kollisionen?",
+      "options": [
+        "Eine Gleichverteilung der Werte.",
+        "Eine stark konzentrierte Normalverteilung (Gauß).",
+        "Eine Verteilung, bei der alle Werte gleich sind.",
+        "Kollisionen hängen nicht von der Verteilung ab."
+      ],
+      "correct": [0],
+      "explanation": "Bei Gleichverteilung landen die Werte gleichmäßig verteilt in den 'Fächern', es entstehen wenige Kollisionen. Bei einer Gauß-Verteilung häufen sich Werte und damit Kollisionen."
+    },
+    {
+      "id": "so14",
+      "question": "Worin unterscheidet sich Proxmap-Sort grundsätzlich von klassischen Sortierverfahren wie Selection- oder Quicksort?",
+      "options": [
+        "Proxmap-Sort nutzt die Werteverteilung; klassische Verfahren benötigen nur eine Ordnungsrelation (Vergleichbarkeit) und ignorieren die Verteilung.",
+        "Proxmap-Sort vergleicht Elemente, klassische Verfahren nicht.",
+        "Klassische Verfahren sind immer O(n), Proxmap-Sort O(n²).",
+        "Es gibt keinen Unterschied."
+      ],
+      "correct": [0],
+      "explanation": "Vergleichssortierer brauchen nur die Ordnungsrelation. Proxmap-Sort nutzt zusätzlich Wissen über die Verteilung, um Positionen zu schätzen."
+    },
+    {
+      "id": "so15",
+      "question": "Beim Proxmap-Sort soll der Füllgrad der Fächer nicht zu hoch werden. Welche Faustregel nennt das Kapitel?",
+      "options": [
+        "Nicht mehr als etwa 75 % Füllung, sonst häufen sich Kollisionen.",
+        "Genau 100 % Füllung anstreben.",
+        "Höchstens 10 % Füllung.",
+        "Der Füllgrad ist irrelevant."
+      ],
+      "correct": [0],
+      "explanation": "Bleibt der Füllgrad unter rund 75 %, halten sich Kollisionen in Grenzen; darüber steigt der Zusatzaufwand stark."
+    },
+    {
+      "id": "so16",
+      "question": "Ordne die Laufzeiten nach steigendem Wachstum (langsamstes Wachstum zuerst). Welche Reihenfolge ist korrekt?",
+      "options": [
+        "log n, n, n·log n, n², 2^n",
+        "n², log n, n, 2^n, n·log n",
+        "2^n, n², n·log n, n, log n",
+        "n, log n, n², n·log n, 2^n"
+      ],
+      "correct": [0],
+      "explanation": "Von langsam nach schnell wachsend: logarithmisch < linear < n·log n < quadratisch < exponentiell."
+    },
+    {
+      "id": "so17",
+      "question": "Warum ist die Unterscheidung zwischen linearem, logarithmischem und höherem Wachstum so wichtig?",
+      "options": [
+        "Bei großen Datenmengen entscheidet das Wachstumsverhalten darüber, ob ein Problem in vertretbarer Zeit lösbar ist.",
+        "Sie ist nur für kleine Datenmengen relevant.",
+        "Sie beeinflusst nur den Speicherplatz, nicht die Zeit.",
+        "Sie ist reine Theorie ohne praktische Bedeutung."
+      ],
+      "correct": [0],
+      "explanation": "Bei wachsendem n dominiert das Wachstumsverhalten den Aufwand; ein exponentielles Verfahren ist schon bei mittlerer Größe unbrauchbar, ein logarithmisches bleibt handhabbar."
+    },
+    {
+      "id": "so18",
+      "question": "Ein Vergleich zweier Elemente zählt im Modell des Kapitels als wie viele Operationen?",
+      "options": [
+        "Eine Operation.",
+        "Drei Operationen.",
+        "Null Operationen.",
+        "So viele wie die Elementanzahl."
+      ],
+      "correct": [0],
+      "explanation": "Ein Vergleich zählt als eine Operation, ein Vertauschen (mit Zwischenspeicher) als drei."
+    },
+    {
+      "id": "so19",
+      "question": "Die Groß-O-Notation (Omikron) geht auf welchen Mathematiker zurück?",
+      "options": [
+        "Paul Bachmann (1892).",
+        "Edsger Dijkstra.",
+        "Tony Hoare.",
+        "Alan Turing."
+      ],
+      "correct": [0],
+      "explanation": "Die O-Notation wurde von Paul Bachmann (1892) eingeführt; das O ist der griechische Buchstabe Omikron."
+    },
+    {
+      "id": "so20",
+      "question": "Ein Kollege behauptet: 'Ein O(n²)-Algorithmus ist auf einem doppelt so schnellen Rechner ein O(n)-Algorithmus.' Warum ist das falsch?",
+      "options": [
+        "Die Komplexitätsklasse beschreibt das Wachstum und ändert sich nicht durch schnellere Hardware; nur der konstante Faktor sinkt.",
+        "Weil doppelte Geschwindigkeit die Klasse sogar verschlechtert.",
+        "Weil O(n²) immer schneller ist als O(n).",
+        "Die Aussage ist tatsächlich richtig."
+      ],
+      "correct": [0],
+      "explanation": "Schnellere Hardware verändert nur den konstanten Faktor, nicht das asymptotische Wachstum. O(n²) bleibt O(n²)."
+    }
+  ]
+}

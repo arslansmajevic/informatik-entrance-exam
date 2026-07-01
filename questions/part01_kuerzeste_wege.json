@@ -1,0 +1,282 @@
+{
+  "title": "Teil 1: Kürzeste Wege & Graphen",
+  "description": "Abstraktion, Graphen, Brute-Force, Dijkstra-Algorithmus, A*, Komplexitätsklassen P/NP. Fragen basieren auf Kapitel 1 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "kw01",
+      "question": "Was versteht man in der Informatik unter 'Abstraktion', wenn man aus einer Straßenkarte einen Graphen macht?",
+      "options": [
+        "Man lässt für das Problem unwichtige Details weg und behält nur das Wesentliche (Kreuzungen und Verbindungen).",
+        "Man vergrößert die Karte, um mehr Details darzustellen.",
+        "Man misst jede Straße exakt mit dem Lineal nach.",
+        "Man malt die Karte in mehr Farben, damit sie schöner aussieht."
+      ],
+      "correct": [0],
+      "explanation": "Abstraktion bedeutet, Unwesentliches wegzulassen. Aus Städten/Kreuzungen werden Knoten, aus Straßen werden Kanten (mit Gewichten)."
+    },
+    {
+      "id": "kw02",
+      "question": "Ein Graph besteht aus welchen Grundbestandteilen?",
+      "options": [
+        "Knoten und Kanten",
+        "Zeilen und Spalten",
+        "Bits und Bytes",
+        "Schlüssel und Werte"
+      ],
+      "correct": [0],
+      "explanation": "Ein Graph besteht aus Knoten (z. B. Städte) und Kanten (Verbindungen). Kanten können gerichtet oder ungerichtet und gewichtet sein."
+    },
+    {
+      "id": "kw03",
+      "question": "Was ist ein 'vollständiger Graph'?",
+      "options": [
+        "Ein Graph, in dem jeder Knoten mit jedem anderen Knoten direkt durch eine Kante verbunden ist.",
+        "Ein Graph, der bereits fertig gezeichnet wurde.",
+        "Ein Graph ganz ohne Kanten.",
+        "Ein Graph, der nur aus einem einzigen Knoten besteht."
+      ],
+      "correct": [0],
+      "explanation": "Im vollständigen Graphen ist jeder Knoten mit jedem anderen direkt verbunden."
+    },
+    {
+      "id": "kw04",
+      "question": "Beim Brute-Force-Ansatz zur Berechnung des kürzesten Weges probiert man alle möglichen Wege durch. Warum ist das für große Karten unpraktikabel?",
+      "options": [
+        "Die Zahl der zu prüfenden Wege wächst extrem schnell (etwa (n-1)! bei n Städten).",
+        "Der Computer hat nicht genug Farben zum Zeichnen.",
+        "Brute-Force liefert grundsätzlich falsche Ergebnisse.",
+        "Brute-Force funktioniert nur bei ungerichteten Graphen."
+      ],
+      "correct": [0],
+      "explanation": "Bei n Orten gibt es rund (n-1)! mögliche Reihenfolgen; der Aufwand explodiert (Größenordnung n hoch n) und ist praktisch nicht mehr berechenbar."
+    },
+    {
+      "id": "kw05",
+      "question": "Der Dijkstra-Algorithmus wird im Buch mit einer Ameisen-Analogie erklärt: Von der Startstadt laufen Ameisen mit gleicher Geschwindigkeit los. Was bedeutet es, wenn die erste Ameise einen Knoten erreicht?",
+      "options": [
+        "Der kürzeste Weg vom Start zu diesem Knoten steht endgültig fest.",
+        "Der Knoten wird aus dem Graphen gelöscht.",
+        "Der längste Weg zu diesem Knoten ist gefunden.",
+        "Alle Ameisen kehren zum Start zurück."
+      ],
+      "correct": [0],
+      "explanation": "Weil alle Ameisen gleich schnell sind, hat die zuerst ankommende den kürzesten Weg genommen; dieser Wert ist damit 'finalisiert'."
+    },
+    {
+      "id": "kw06",
+      "question": "Was liefert der Dijkstra-Algorithmus, wenn er von einem Startknoten aus gestartet wird?",
+      "options": [
+        "Die kürzesten Wege vom Startknoten zu ALLEN anderen Knoten.",
+        "Nur den kürzesten Weg zum einen gewünschten Zielknoten und nichts anderes.",
+        "Die kürzesten Wege zwischen jedem beliebigen Knotenpaar gleichzeitig.",
+        "Den längsten Weg im gesamten Graphen."
+      ],
+      "correct": [0],
+      "explanation": "Als 'Nebenprodukt' berechnet Dijkstra die kürzesten Wege vom Start zu allen Knoten. Für einen anderen Startknoten ist das Ergebnis aber nicht gültig."
+    },
+    {
+      "id": "kw07",
+      "question": "Warum darf man das Ergebnis eines Dijkstra-Laufs NICHT einfach für einen anderen Startknoten wiederverwenden?",
+      "options": [
+        "Die berechneten Distanzen gelten immer nur relativ zum ursprünglichen Startknoten.",
+        "Der Algorithmus löscht nach jedem Lauf den Graphen.",
+        "Dijkstra funktioniert nur genau einmal pro Programm.",
+        "Man darf es problemlos wiederverwenden, es gibt keinen Grund dagegen."
+      ],
+      "correct": [0],
+      "explanation": "Die kürzesten Distanzen sind stets vom gewählten Start abhängig. Für einen neuen Start muss der Algorithmus neu laufen."
+    },
+    {
+      "id": "kw08",
+      "question": "Die Komplexität des im Buch beschriebenen Dijkstra-Verfahrens liegt in der Größenordnung n². Was bedeutet das anschaulich?",
+      "options": [
+        "Verdoppelt sich die Zahl der Knoten, vervierfacht sich ungefähr der Rechenaufwand.",
+        "Verdoppelt sich die Zahl der Knoten, verdoppelt sich der Aufwand genau.",
+        "Der Aufwand bleibt unabhängig von der Knotenzahl gleich.",
+        "Der Aufwand halbiert sich bei doppelter Knotenzahl."
+      ],
+      "correct": [0],
+      "explanation": "Bei quadratischem Wachstum (n²) führt eine Verdopplung von n zu etwa vierfachem Aufwand."
+    },
+    {
+      "id": "kw09",
+      "question": "Wie kann man den Dijkstra-Algorithmus so anpassen, dass er statt der kürzesten Strecke die SCHNELLSTE Fahrzeit berechnet?",
+      "options": [
+        "Man ersetzt die Kantengewichte 'Entfernung' durch die 'Fahrzeit' (Entfernung geteilt durch erlaubte Geschwindigkeit, ggf. plus Zeit für Ortsdurchfahrten).",
+        "Man startet den Algorithmus einfach am Ziel statt am Start.",
+        "Man verwendet quadrierte Entfernungen als Gewichte.",
+        "Das ist mit Dijkstra prinzipiell unmöglich."
+      ],
+      "correct": [0],
+      "explanation": "Der Algorithmus bleibt gleich; nur die Kantengewichte werden von Entfernung auf Zeit umgestellt (z. B. Autobahn 130, Landstraße 100, Gemeindestraße 50 km/h, plus Durchfahrtszeit)."
+    },
+    {
+      "id": "kw10",
+      "question": "Warum ist der kürzeste Weg (nach Entfernung) nicht automatisch auch der schnellste (nach Zeit)?",
+      "options": [
+        "Eine längere Autobahnstrecke kann trotz mehr Kilometern wegen höherer Geschwindigkeit schneller sein als eine kurze Landstraße.",
+        "Kürzeste Wege sind physikalisch immer auch die schnellsten.",
+        "Zeit und Entfernung sind exakt dasselbe.",
+        "Der schnellste Weg ist immer der mit den wenigsten Knoten."
+      ],
+      "correct": [0],
+      "explanation": "Weil verschiedene Straßentypen unterschiedliche Geschwindigkeiten erlauben, ist die kürzeste Strecke nicht zwingend die zeitlich schnellste."
+    },
+    {
+      "id": "kw11",
+      "question": "Der A*-Algorithmus (A-Stern) erweitert Dijkstra. Wodurch?",
+      "options": [
+        "Er nutzt zusätzlich eine Schätzung (z. B. die Luftlinie zum Ziel), um bevorzugt in Richtung Ziel zu suchen.",
+        "Er probiert alle Wege gleichzeitig aus.",
+        "Er verzichtet vollständig auf Kantengewichte.",
+        "Er sucht nur den längsten Weg."
+      ],
+      "correct": [0],
+      "explanation": "A* wählt Knoten nach 'bisherige Strecke + geschätzte Restentfernung (Luftlinie)' aus und richtet die Suche so aufs Ziel aus."
+    },
+    {
+      "id": "kw12",
+      "question": "Welche Bedingung muss die Schätzfunktion (Heuristik) bei A* erfüllen, damit der gefundene Weg garantiert optimal ist?",
+      "options": [
+        "Die Schätzung darf die tatsächliche Restentfernung niemals überschätzen (sie muss eine Untergrenze sein).",
+        "Die Schätzung muss immer größer sein als die tatsächliche Entfernung.",
+        "Die Schätzung muss exakt Null sein.",
+        "Die Schätzung darf sich zufällig ändern."
+      ],
+      "correct": [0],
+      "explanation": "Die Heuristik muss eine untere Schranke sein (z. B. Luftlinie ≤ echte Fahrstrecke). Nur dann bleibt A* optimal."
+    },
+    {
+      "id": "kw13",
+      "question": "Womit wird die Luftlinie zwischen zwei Orten aus deren Koordinaten berechnet?",
+      "options": [
+        "Mit dem Satz des Pythagoras.",
+        "Mit dem Dijkstra-Algorithmus.",
+        "Mit einer Hashfunktion.",
+        "Durch Ausprobieren aller Wege."
+      ],
+      "correct": [0],
+      "explanation": "Aus den x-/y-Koordinaten ergibt sich die Luftlinie über den Satz des Pythagoras."
+    },
+    {
+      "id": "kw14",
+      "question": "Zu welcher Komplexitätsklasse gehören Laufzeiten wie n², n·log n oder n^100?",
+      "options": [
+        "Zur Klasse P (polynomiell), also 'praktisch berechenbar'.",
+        "Zur Klasse NP-vollständig.",
+        "Zu den nicht berechenbaren Problemen.",
+        "Zu den exponentiellen Problemen."
+      ],
+      "correct": [0],
+      "explanation": "Polynomielle Laufzeiten (Potenzen von n) bilden die Klasse P und gelten als praktisch lösbar – auch n^100 zählt formal dazu."
+    },
+    {
+      "id": "kw15",
+      "question": "Welche Aussagen über die Klasse NP treffen zu?",
+      "options": [
+        "Eine geratene Lösung lässt sich in polynomieller Zeit überprüfen.",
+        "Das Problem des Handlungsreisenden (TSP) gehört zu NP.",
+        "Ob P = NP gilt, ist bis heute ein offenes Problem.",
+        "Für NP-Probleme ist immer ein schneller (polynomieller) Lösungsalgorithmus bekannt."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "NP heißt: eine Lösung ist schnell prüfbar (raten + verifizieren). TSP ist ein klassisches NP-Problem. Ob P = NP gilt, ist ungelöst. Ein schneller Lösungsweg ist gerade NICHT bekannt."
+    },
+    {
+      "id": "kw16",
+      "question": "Ein wichtiger Unterschied zwischen 'Brute-Force' und einem 'effizienten Algorithmus' wie Dijkstra ist:",
+      "options": [
+        "Brute-Force probiert stur alle Möglichkeiten durch, ein effizienter Algorithmus nutzt clevere Regeln und spart dadurch enorm viel Arbeit.",
+        "Brute-Force ist immer schneller als jeder clevere Algorithmus.",
+        "Effiziente Algorithmen liefern nur ungefähre, ungenaue Ergebnisse.",
+        "Es gibt gar keinen Unterschied im Rechenaufwand."
+      ],
+      "correct": [0],
+      "explanation": "Der Gewinn effizienter Algorithmen liegt darin, nicht alle Möglichkeiten durchprobieren zu müssen, sondern strukturiert zur Lösung zu kommen."
+    },
+    {
+      "id": "kw17",
+      "question": "Beim Zwischenstand von Dijkstra unterscheidet man 'endgültige' und 'vorläufige' Werte. Was ist ein VORLÄUFIGER Wert?",
+      "options": [
+        "Eine bisher beste bekannte, aber noch verbesserbare Distanz zu einem noch nicht abschließend erreichten Knoten.",
+        "Der garantiert kürzeste Weg zu einem Knoten.",
+        "Ein Wert, der nie mehr verändert werden darf.",
+        "Die Luftlinie zum Startknoten."
+      ],
+      "correct": [0],
+      "explanation": "Vorläufige (tentative) Werte können sich noch verbessern; erst wenn ein Knoten 'besucht/finalisiert' ist, steht sein kürzester Weg fest."
+    },
+    {
+      "id": "kw18",
+      "question": "Das ursprüngliche Verfahren von Dijkstra (mit geeigneter Datenstruktur / Vorrangwarteschlange) hat eine bessere Komplexität als n². Welche?",
+      "options": [
+        "Größenordnung n·log n",
+        "Größenordnung 2^n",
+        "Größenordnung n!",
+        "Größenordnung konstant (unabhängig von n)"
+      ],
+      "correct": [0],
+      "explanation": "Mit einer Prioritätswarteschlange erreicht Dijkstra eine Laufzeit in der Größenordnung n·log n."
+    },
+    {
+      "id": "kw19",
+      "question": "Was beschreibt der Begriff 'Modellbildung' im Sinne des Kapitels?",
+      "options": [
+        "Das Überführen eines realen Problems in eine vereinfachte, formale Darstellung (z. B. einen Graphen mit Gewichten), mit der man rechnen kann.",
+        "Das Bauen eines physischen Modellautos.",
+        "Das exakte Nachzeichnen jeder realen Straße.",
+        "Das Auswendiglernen aller Städtenamen."
+      ],
+      "correct": [0],
+      "explanation": "Modellbildung heißt, die Realität so weit zu vereinfachen und zu formalisieren, dass ein Algorithmus darauf arbeiten kann."
+    },
+    {
+      "id": "kw20",
+      "question": "Bei der Landmarken-/Leuchtturm-Technik (Vorberechnung von Distanzen zu festen Punkten) nutzt man welche mathematische Eigenschaft, um Distanzen abzuschätzen?",
+      "options": [
+        "Die Dreiecksungleichung: |AB| ≥ | |LA| − |LB| |.",
+        "Den Satz von Pythagoras für rechte Winkel.",
+        "Die Regel, dass alle Wege gleich lang sind.",
+        "Die Tatsache, dass Umwege immer kürzer sind."
+      ],
+      "correct": [0],
+      "explanation": "Mit vorab bekannten Distanzen zu Landmarken (Leuchttürmen) liefert die Dreiecksungleichung untere Schranken für Entfernungen."
+    },
+    {
+      "id": "kw21",
+      "question": "Betrachte einen Graphen mit Kanten: I–B = 7, B–H = 6, I–H = 13. Wie lang ist der kürzeste Weg von I nach H?",
+      "options": [
+        "13 (beide Wege I–B–H und I–H sind gleich lang)",
+        "7",
+        "6",
+        "26"
+      ],
+      "correct": [0],
+      "explanation": "I–B–H = 7 + 6 = 13, und die direkte Kante I–H = 13. Beide Wege sind gleich lang, der kürzeste Weg ist also 13."
+    },
+    {
+      "id": "kw22",
+      "question": "Warum ist eine reine 'Bounding-Box'-Beschränkung (nur Knoten innerhalb eines Rechtecks zwischen Start und Ziel betrachten) riskant?",
+      "options": [
+        "Der optimale Weg kann aus der Box herausführen (z. B. um ein Hindernis wie das Meer herum) und würde dann übersehen.",
+        "Die Box ist immer zu groß und macht die Suche langsamer.",
+        "Bounding-Boxen funktionieren nur bei ungewichteten Graphen.",
+        "Es gibt kein Risiko, die Box liefert stets das Optimum."
+      ],
+      "correct": [0],
+      "explanation": "Manchmal verläuft der beste Weg außerhalb des direkten Rechtecks (Beispiel Lecce–Catanzaro entlang der Küste); dann liefert die Box eine schlechtere Lösung."
+    },
+    {
+      "id": "kw23",
+      "question": "Welche Aussagen zum Verhältnis von A* und Dijkstra sind richtig?",
+      "options": [
+        "A* ist eine Erweiterung von Dijkstra um eine Zielrichtungs-Heuristik.",
+        "Ohne Heuristik (Schätzung immer 0) verhält sich A* wie Dijkstra.",
+        "A* untersucht durch die Heuristik meist weniger Knoten als Dijkstra.",
+        "A* liefert grundsätzlich kürzere Wege als tatsächlich existieren."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "A* = Dijkstra + zulässige Heuristik; mit Heuristik 0 wird es zu Dijkstra; die Zielrichtung spart typischerweise Knoten. Die Weglänge selbst bleibt korrekt (optimal), nicht künstlich verkürzt."
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "title": "Teil 8: Fehlererkennung & Fehlerkorrektur",
+  "description": "Paritätsprüfung, Redundanz, Fehlererkennung vs. -korrektur, Hamming-Distanz, Prüfziffer (Kreditkarte), CD/DVD/Blu-Ray. Fragen basieren auf Kapitel 14 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "fk01",
+      "question": "Beim 'Zaubertrick' ergänzt man ein 5×5-Feld aus X und O um eine Zeile und Spalte, sodass jede Zeile und Spalte eine GERADE Anzahl von X enthält. Wie nennt man solche Zusatzdaten?",
+      "options": [
+        "Redundante Daten (Redundanz).",
+        "Verschlüsselte Daten.",
+        "Komprimierte Daten.",
+        "Zufällige Daten."
+      ],
+      "correct": [0],
+      "explanation": "Die zusätzlichen Paritätsfelder sind redundant: Sie erhöhen den Informationsgehalt nicht, ermöglichen aber Fehlererkennung/-korrektur."
+    },
+    {
+      "id": "fk02",
+      "question": "Erhöhen redundante Daten den Informationsgehalt eines Datensatzes?",
+      "options": [
+        "Nein – sie lassen sich aus den übrigen Daten wiederherstellen, tragen also keine neue Information.",
+        "Ja, jede Zusatzzeile verdoppelt die Information.",
+        "Ja, sie enthalten die eigentliche Nachricht.",
+        "Nur wenn sie verschlüsselt sind."
+      ],
+      "correct": [0],
+      "explanation": "Redundante Daten sind aus dem Rest rekonstruierbar und enthalten daher keine zusätzliche Information; sie dienen der Fehlertoleranz."
+    },
+    {
+      "id": "fk03",
+      "question": "Bei der einfachen Paritätsmethode (gerade Anzahl X pro Zeile/Spalte): Wie viele umgedrehte Karten (Fehler) kann man sicher KORRIGIEREN?",
+      "options": [
+        "Genau einen Fehler (er liegt am Schnittpunkt der auffälligen Zeile und Spalte).",
+        "Bis zu drei Fehler sicher.",
+        "Beliebig viele Fehler.",
+        "Gar keinen Fehler."
+      ],
+      "correct": [0],
+      "explanation": "Ein einzelner Fehler verletzt genau eine Zeile und eine Spalte; ihr Schnittpunkt zeigt die falsche Karte, die man korrigiert."
+    },
+    {
+      "id": "fk04",
+      "question": "Warum lassen sich ZWEI Fehler mit der einfachen Paritätsmethode zwar erkennen, aber nicht sicher korrigieren?",
+      "options": [
+        "Es gibt mehrere mögliche Fehlerkonstellationen; eine 'Korrektur' könnte die Zahl der Fehler sogar erhöhen.",
+        "Zwei Fehler heben sich immer gegenseitig auf.",
+        "Zwei Fehler sind gar nicht erkennbar.",
+        "Weil zwei Fehler die Redundanz löschen."
+      ],
+      "correct": [0],
+      "explanation": "Bei zwei Fehlern kann man nicht eindeutig sagen, welche Karten falsch sind (z. B. 'grün oder rot markiert'); eine Korrektur könnte aus zwei Fehlern vier machen."
+    },
+    {
+      "id": "fk05",
+      "question": "Welche Aussage fasst die Trade-offs der einfachen Paritätsmethode korrekt zusammen?",
+      "options": [
+        "Man kann sich entscheiden: entweder 1 Fehler korrigieren (und 2 noch erkennen) ODER auf Korrektur verzichten und bis zu 3 Fehler erkennen.",
+        "Man kann immer alle Fehler korrigieren.",
+        "Erkennung und Korrektur sind dasselbe.",
+        "Man kann nie einen Fehler erkennen."
+      ],
+      "correct": [0],
+      "explanation": "Es besteht eine Wahl: korrigieren (1 korrigierbar, 2 erkennbar) oder nur erkennen (bis zu 3 Fehler). Korrektur funktioniert nur bei wenigen Fehlern."
+    },
+    {
+      "id": "fk06",
+      "question": "Was ist der grundsätzliche Unterschied zwischen Fehler-ERKENNUNG und Fehler-KORREKTUR?",
+      "options": [
+        "Erkennung meldet nur, dass ein Fehler vorliegt; Korrektur stellt zusätzlich den ursprünglichen Wert wieder her.",
+        "Erkennung ist stärker als Korrektur.",
+        "Korrektur funktioniert bei mehr Fehlern als Erkennung.",
+        "Beides bedeutet exakt dasselbe."
+      ],
+      "correct": [0],
+      "explanation": "Erkennung stellt nur fest, DASS etwas falsch ist; Korrektur rekonstruiert den richtigen Wert – das gelingt aber nur bei einer kleineren Fehlerzahl."
+    },
+    {
+      "id": "fk07",
+      "question": "Wie kann ein System reagieren, wenn ein Fehler zwar erkannt, aber nicht sicher korrigiert werden kann (z. B. ein Datenpaket aus dem Internet)?",
+      "options": [
+        "Es kann auf den Fehler aufmerksam machen oder die Daten einfach erneut anfordern.",
+        "Es muss die Daten auf jeden Fall raten und korrigieren.",
+        "Es muss den Computer neu starten.",
+        "Es löscht alle anderen Daten."
+      ],
+      "correct": [0],
+      "explanation": "Statt eine riskante Korrektur zu erzwingen, kann man den Fehler melden oder – etwa bei Netzpaketen – die Daten neu anfordern."
+    },
+    {
+      "id": "fk08",
+      "question": "Was ist die Hamming-Distanz zwischen zwei Codewörtern?",
+      "options": [
+        "Die Anzahl der Stellen, an denen sich die beiden Codewörter unterscheiden.",
+        "Die Länge des längeren Codeworts.",
+        "Die Summe aller Einsen in beiden Wörtern.",
+        "Der Abstand der Wörter im Alphabet."
+      ],
+      "correct": [0],
+      "explanation": "Die Hamming-Distanz zählt die Positionen, an denen sich zwei gleich lange Codewörter unterscheiden."
+    },
+    {
+      "id": "fk09",
+      "question": "Wie ist die Hamming-Distanz eines gesamten Codes (einer Codetabelle) definiert?",
+      "options": [
+        "Als die kleinste Hamming-Distanz, die irgendein Paar von Codewörtern hat.",
+        "Als die größte Distanz zweier Codewörter.",
+        "Als der Mittelwert aller Distanzen.",
+        "Als die Länge der Codewörter."
+      ],
+      "correct": [0],
+      "explanation": "Die Hamming-Distanz eines Codes ist das Minimum über alle Codewortpaare; sie bestimmt die Fehlertoleranz."
+    },
+    {
+      "id": "fk10",
+      "question": "Empfangen wird die Bitfolge 001000. In der Codetabelle steht A = 000000 und alle Codewörter haben untereinander mindestens Hamming-Distanz 3. Zu welchem Zeichen korrigiert man?",
+      "options": [
+        "Zu A (000000), da es sich nur an einer Stelle unterscheidet und ein Einzelbitfehler am wahrscheinlichsten ist.",
+        "Zu keinem Zeichen, die Nachricht ist verloren.",
+        "Zu einem beliebigen Zeichen.",
+        "Zu einem Zeichen mit Distanz 3."
+      ],
+      "correct": [0],
+      "explanation": "001000 unterscheidet sich von A=000000 nur an einer Stelle. Bei Mindestdistanz 3 gibt es genau ein nächstgelegenes Codewort – A wird gewählt."
+    },
+    {
+      "id": "fk11",
+      "question": "Ein Code hat die Hamming-Distanz 3. Wie viele Bitfehler pro Codewort kann er korrigieren?",
+      "options": [
+        "Einen Bitfehler.",
+        "Zwei Bitfehler.",
+        "Drei Bitfehler.",
+        "Keinen Bitfehler."
+      ],
+      "correct": [0],
+      "explanation": "Bei Mindestdistanz 3 ist genau ein Bitfehler korrigierbar (das nächste Codewort ist eindeutig)."
+    },
+    {
+      "id": "fk12",
+      "question": "Ein Code hat die Hamming-Distanz 6. Welche Aussagen sind korrekt?",
+      "options": [
+        "Man kann 2 Fehler korrigieren und 3 Fehler noch erkennen.",
+        "Alternativ kann man auf Korrektur verzichten und bis zu 5 Fehler nur erkennen.",
+        "Bei 3 gleich weit entfernten Codewörtern ist die Korrektur nicht mehr eindeutig.",
+        "Der Code kann beliebig viele Fehler korrigieren."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Distanz 6 erlaubt: 2 Fehler korrigieren + 3 erkennen, ODER bis zu 5 Fehler nur erkennen. Bei drei Fehlern kann die Korrektur mehrdeutig werden. Unbegrenzt geht es nicht."
+    },
+    {
+      "id": "fk13",
+      "question": "Kreditkartennummern besitzen eine Prüfziffer (Luhn-Verfahren): abwechselnd jede Ziffer mit 2 bzw. 1 multiplizieren, von den Ergebnissen die Ziffern aufaddieren; die Summe muss ein Vielfaches von ... sein.",
+      "options": [
+        "10.",
+        "7.",
+        "2.",
+        "100."
+      ],
+      "correct": [0],
+      "explanation": "Beim Luhn-Verfahren muss die berechnete Quersumme ein Vielfaches von 10 ergeben, sonst ist die Nummer ungültig."
+    },
+    {
+      "id": "fk14",
+      "question": "Wogegen schützt eine Prüfziffer besonders gut?",
+      "options": [
+        "Gegen 'Zahlendreher', also das Vertauschen zweier benachbarter Ziffern, und gegen Vertippen.",
+        "Gegen das Ausspähen des Passworts.",
+        "Gegen Stromausfall.",
+        "Gegen zu langsame Übertragung."
+      ],
+      "correct": [0],
+      "explanation": "Prüfziffern sind so gebaut, dass Vertauschungen und Tippfehler die geforderte Regel verletzen und damit auffallen."
+    },
+    {
+      "id": "fk15",
+      "question": "Bei DVDs/Blu-Rays wird nur etwa 87 % der Kapazität für echte Daten genutzt, der Rest für Redundanz. Worauf ist diese Fehlerkorrektur besonders ausgelegt?",
+      "options": [
+        "Auf lokal stark konzentrierte Fehler (durch Staubkorn oder Kratzer).",
+        "Auf über die ganze Scheibe gleichmäßig verteilte Einzelfehler.",
+        "Auf Fehler, die nur beim Beschreiben entstehen.",
+        "Auf Farbfehler des Bildschirms."
+      ],
+      "correct": [0],
+      "explanation": "Ein Staubkorn oder Kratzer zerstört viele benachbarte Pits gleichzeitig. Die Korrektur ist deshalb auf lokal geballte (Burst-)Fehler ausgelegt."
+    },
+    {
+      "id": "fk16",
+      "question": "Warum werden bei der erweiterten Methode (getrennte Prüfung gerader/ungerader Zeilen und Spalten) benachbarte Positionen in verschiedene 'Bereiche' aufgeteilt?",
+      "options": [
+        "Um den häufigen menschlichen Fehler des Vertauschens zweier NEBENEINANDER liegender Stellen abzufangen.",
+        "Damit die Tabelle größer aussieht.",
+        "Um Zufallszahlen zu erzeugen.",
+        "Um die Daten zu verschlüsseln."
+      ],
+      "correct": [0],
+      "explanation": "Liegen benachbarte Stellen in unterschiedlichen Prüfbereichen, wird ein Vertauschen zweier Nachbarn gut erkennbar (ähnlich dem Interleaving bei echten Codes)."
+    },
+    {
+      "id": "fk17",
+      "question": "Ein höherer Hamming-Abstand eines Codes bedeutet:",
+      "options": [
+        "Der Code ist robuster – es lassen sich ggf. mehr Fehler erkennen und/oder korrigieren.",
+        "Der Code wird automatisch kürzer.",
+        "Der Code kann keine Fehler mehr erkennen.",
+        "Die Übertragung wird dadurch unsicherer."
+      ],
+      "correct": [0],
+      "explanation": "Je größer die Mindestdistanz, desto unterschiedlicher sind die gültigen Codewörter und desto mehr Fehler sind tolerierbar."
+    },
+    {
+      "id": "fk18",
+      "question": "Warum kann eine (versuchte) Korrektur die Situation manchmal VERSCHLIMMERN?",
+      "options": [
+        "Wenn mehr Fehler vorliegen als der Code sicher korrigieren kann, 'korrigiert' man auf ein falsches Codewort und erzeugt zusätzliche Fehler.",
+        "Weil Korrektur immer schädlich ist.",
+        "Weil Redundanz die Daten löscht.",
+        "Weil die Hamming-Distanz dabei sinkt."
+      ],
+      "correct": [0],
+      "explanation": "Jenseits der garantierten Korrekturgrenze liegt evtl. ein falsches Codewort näher; die 'Korrektur' führt dann von der richtigen Lösung weg (z. B. aus 3 Fehlern werden 4)."
+    }
+  ]
+}

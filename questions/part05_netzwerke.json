@@ -1,0 +1,198 @@
+{
+  "title": "Teil 5: Netzwerke & Routing",
+  "description": "Datenpakete, IP-Adressen, Router, Routing-Tabellen, DNS, OSI-Schichtenmodell, Switch vs. Router. Fragen basieren auf Kapitel 9 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "nw01",
+      "question": "Aus wie vielen Zahlen im Bereich 0 bis 255 besteht eine (IPv4-)IP-Adresse, und wie werden sie getrennt?",
+      "options": [
+        "Aus 4 Zahlen (0–255), getrennt durch Punkte, z. B. 130.83.242.159.",
+        "Aus 6 Zahlen, getrennt durch Doppelpunkte.",
+        "Aus 8 Buchstaben, getrennt durch Bindestriche.",
+        "Aus 2 Zahlen, getrennt durch Kommas."
+      ],
+      "correct": [0],
+      "explanation": "Eine IPv4-Adresse besteht aus vier Zahlen von 0 bis 255, durch Punkte getrennt (z. B. 130.83.242.159)."
+    },
+    {
+      "id": "nw02",
+      "question": "Woran erkennt ein Rechner, ob ein Zielrechner im selben Netzwerk liegt und direkt erreichbar ist?",
+      "options": [
+        "Wenn die ersten drei Zahlen der IP-Adresse übereinstimmen, liegt der Zielrechner im gleichen Netz.",
+        "Wenn die letzte Zahl gleich ist.",
+        "Wenn beide Adressen gerade sind.",
+        "Nur wenn beide Adressen identisch sind."
+      ],
+      "correct": [0],
+      "explanation": "Bei gleichem Präfix (im Beispiel die ersten drei Zahlen) liegen die Rechner im selben Netz und können direkt kommunizieren; sonst geht es über den Router."
+    },
+    {
+      "id": "nw03",
+      "question": "Welche Informationen benötigt ein Rechner mindestens, um im Netz zu kommunizieren?",
+      "options": [
+        "Seine eigene IP-Adresse.",
+        "Die Regel, welcher Adressbereich als 'direkt erreichbar' gilt.",
+        "Die Adresse seines Routers (Standard-Gateway).",
+        "Die Passwörter aller anderen Rechner im Netz."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Ein Rechner braucht seine eigene IP, die Regel für das direkte (lokale) Netz und die Router-Adresse. Passwörter anderer Rechner sind dafür nicht nötig."
+    },
+    {
+      "id": "nw04",
+      "question": "Was ist die Aufgabe eines Routers?",
+      "options": [
+        "Er verbindet verschiedene Netzwerke und leitet Datenpakete zwischen ihnen weiter; er hat dazu mindestens zwei IP-Adressen.",
+        "Er verschlüsselt alle Daten automatisch.",
+        "Er sortiert die Daten alphabetisch.",
+        "Er speichert dauerhaft alle Nachrichten."
+      ],
+      "correct": [0],
+      "explanation": "Ein Router (Standard-Gateway) verbindet Netzwerke und besitzt in jedem angeschlossenen Netz eine eigene IP-Adresse."
+    },
+    {
+      "id": "nw05",
+      "question": "Warum muss jede Nachricht im Netz sowohl Absender- als auch Empfängeradresse enthalten?",
+      "options": [
+        "Damit das Paket zugestellt werden kann und der Empfänger antworten kann.",
+        "Nur zur Verschönerung des Pakets.",
+        "Weil Router sonst die Nachricht löschen müssten.",
+        "Um die Nachricht zu verschlüsseln."
+      ],
+      "correct": [0],
+      "explanation": "Absender- und Empfängeradresse ermöglichen Zustellung und Rückantwort; ohne sie könnte das Paket nicht korrekt weitergeleitet werden."
+    },
+    {
+      "id": "nw06",
+      "question": "In einer Routing-Tabelle mit mehreren passenden Regeln – welche wird angewandt?",
+      "options": [
+        "Die spezifischste (am genauesten passende) Regel hat Vorrang.",
+        "Die zuletzt eingetragene Regel.",
+        "Die allgemeinste Regel.",
+        "Eine zufällig ausgewählte Regel."
+      ],
+      "correct": [0],
+      "explanation": "Bei Routing-Tabellen gewinnt die spezifischste Regel (longest prefix match) vor allgemeineren Einträgen."
+    },
+    {
+      "id": "nw07",
+      "question": "Wozu dient das DNS (Domain Name System)?",
+      "options": [
+        "Es übersetzt (hierarchisch) Namen wie www.beispiel.de in IP-Adressen.",
+        "Es verschlüsselt E-Mails.",
+        "Es sortiert Datenpakete nach Größe.",
+        "Es speichert Passwörter."
+      ],
+      "correct": [0],
+      "explanation": "DNS ordnet menschenlesbare Namen den zugehörigen IP-Adressen zu – hierarchisch aufgebaut."
+    },
+    {
+      "id": "nw08",
+      "question": "Was beschreibt der Unterschied zwischen einem LAN und einem WAN?",
+      "options": [
+        "Ein LAN ist ein kleines, lokales Netz; ein WAN verbindet über große Entfernungen mehrere Netze/LANs.",
+        "Ein LAN ist immer verschlüsselt, ein WAN nie.",
+        "Ein WAN ist kleiner als ein LAN.",
+        "LAN und WAN sind dasselbe."
+      ],
+      "correct": [0],
+      "explanation": "LAN = lokales Netz (klein, direkt), WAN = Weitverkehrsnetz, das entfernte Netze verbindet."
+    },
+    {
+      "id": "nw09",
+      "question": "Das OSI-Modell gliedert die Netzwerkkommunikation in wie viele Schichten?",
+      "options": [
+        "7 Schichten.",
+        "3 Schichten.",
+        "4 Schichten.",
+        "10 Schichten."
+      ],
+      "correct": [0],
+      "explanation": "Das OSI-Modell (Open Systems Interconnection) besteht aus sieben Schichten."
+    },
+    {
+      "id": "nw10",
+      "question": "Auf welcher OSI-Schicht arbeitet das Routing (Wegewahl zwischen Netzen)?",
+      "options": [
+        "Auf der Vermittlungsschicht (Schicht 3, Network Layer).",
+        "Auf der Bitübertragungsschicht (Schicht 1).",
+        "Auf der Transportschicht (Schicht 4).",
+        "Auf der Sicherungsschicht (Schicht 2)."
+      ],
+      "correct": [0],
+      "explanation": "Routing ist Aufgabe der Vermittlungsschicht (Schicht 3)."
+    },
+    {
+      "id": "nw11",
+      "question": "Welche Aufgaben gehören zur Sicherungsschicht (Schicht 2, Data Link)?",
+      "options": [
+        "Nummerierung von Paketen, Prüfsummen und Fehlerkorrektur auf der Verbindung.",
+        "Adressierung innerhalb des lokalen Netzes (LAN).",
+        "Die endgültige Wegewahl zwischen mehreren Netzen.",
+        "Das Umwandeln von Namen in IP-Adressen."
+      ],
+      "correct": [0, 1],
+      "explanation": "Schicht 2 sorgt für zuverlässige Übertragung (Nummerierung, Prüfsummen, Fehlerkorrektur) und die LAN-Adressierung. Routing (Schicht 3) und DNS gehören nicht dazu."
+    },
+    {
+      "id": "nw12",
+      "question": "Worin unterscheiden sich Switch und Router im OSI-Modell?",
+      "options": [
+        "Der Switch arbeitet auf Schicht 2 (innerhalb eines LAN), der Router auf Schicht 3 (zwischen Netzen).",
+        "Beide arbeiten auf Schicht 1.",
+        "Der Switch arbeitet auf Schicht 3, der Router auf Schicht 2.",
+        "Es gibt keinen Unterschied."
+      ],
+      "correct": [0],
+      "explanation": "Ein Switch verteilt Pakete innerhalb eines lokalen Netzes (Schicht 2); ein Router verbindet unterschiedliche Netze (Schicht 3)."
+    },
+    {
+      "id": "nw13",
+      "question": "Warum konnte in frühen Netzen, in denen alle über ein gemeinsames Medium 'gleichzeitig sprachen', prinzipiell jeder mithören?",
+      "options": [
+        "Weil alle Teilnehmer dasselbe geteilte Übertragungsmedium nutzten und jede Nachricht bei allen ankam.",
+        "Weil es damals keine Computer gab.",
+        "Weil Nachrichten grundsätzlich verschlüsselt waren.",
+        "Weil jeder Teilnehmer ein eigenes Kabel hatte."
+      ],
+      "correct": [0],
+      "explanation": "Bei einem gemeinsam genutzten Medium erreicht jede Nachricht alle Teilnehmer; Mithören war deshalb möglich, und viele gleichzeitige Sender führten zu Überlastung."
+    },
+    {
+      "id": "nw14",
+      "question": "Das Phänomen der 'kleinen Welt' (Small World, Milgram) besagt im Netzwerkkontext:",
+      "options": [
+        "Zwischen zwei beliebigen Knoten liegen meist nur wenige Zwischenschritte.",
+        "Netzwerke haben immer genau zwei Knoten.",
+        "Nachrichten brauchen immer sehr viele Zwischenstationen.",
+        "Es gibt keine Verbindungen zwischen entfernten Knoten."
+      ],
+      "correct": [0],
+      "explanation": "Das Small-World-Phänomen (Milgram, 1967) beschreibt, dass wenige 'Hops' genügen; das erklärt u. a. die schnelle Ausbreitung von Viren/Nachrichten."
+    },
+    {
+      "id": "nw15",
+      "question": "Welche Aussagen über IPv6 sind korrekt?",
+      "options": [
+        "IPv6-Adressen sind 128 Bit (16 Byte) lang.",
+        "IPv6 bietet dadurch einen sehr viel größeren Adressraum als IPv4.",
+        "IPv6-Adressen bestehen aus genau vier Zahlen von 0 bis 255.",
+        "IPv6 ersetzt das Konzept von Adressen komplett durch Namen."
+      ],
+      "correct": [0, 1],
+      "explanation": "IPv6 nutzt 128-Bit-Adressen (16 Byte) und schafft damit weit mehr Adressen. Das Vier-Zahlen-Format gehört zu IPv4."
+    },
+    {
+      "id": "nw16",
+      "question": "Ein Rechner mit IP 130.83.242.5 möchte an 130.83.242.99 senden (gleiche ersten drei Zahlen). Was passiert?",
+      "options": [
+        "Er sendet direkt im lokalen Netz, ohne den Router zu benötigen.",
+        "Er muss das Paket zwingend über den Router schicken.",
+        "Er verwirft das Paket, weil die Adressen zu ähnlich sind.",
+        "Er verschlüsselt das Paket automatisch."
+      ],
+      "correct": [0],
+      "explanation": "Da die ersten drei Zahlen (das Netzpräfix) übereinstimmen, liegt der Zielrechner im selben Netz und ist direkt erreichbar."
+    }
+  ]
+}

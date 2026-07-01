@@ -1,0 +1,198 @@
+{
+  "title": "Teil 6: Hashing & Zufallszahlen",
+  "description": "Hashfunktionen, Kollisionen und Kollisionsbehandlung, Belegungsfaktor, Vergleich mit sortierter Suche, Pseudozufallszahlen. Fragen basieren auf Kapitel 11 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "ha01",
+      "question": "Was leistet eine Hashfunktion wie h(s) = s mod n?",
+      "options": [
+        "Sie bildet einen Schlüssel direkt auf eine Speicherposition ab.",
+        "Sie sortiert alle Schlüssel aufsteigend.",
+        "Sie verschlüsselt den Schlüssel sicher.",
+        "Sie zählt die Anzahl der Schlüssel."
+      ],
+      "correct": [0],
+      "explanation": "Eine Hashfunktion berechnet aus dem Schlüssel direkt eine Position (Adresse) in der Tabelle, z. B. über den Divisionsrest (mod n)."
+    },
+    {
+      "id": "ha02",
+      "question": "Ein großer Vorteil des Hashings gegenüber der binären Suche ist:",
+      "options": [
+        "Die Position wird direkt berechnet – ohne den Suchraum schrittweise zu halbieren.",
+        "Hashing braucht immer weniger Speicher.",
+        "Hashing liefert die Daten automatisch sortiert.",
+        "Hashing funktioniert nur ohne Kollisionen."
+      ],
+      "correct": [0],
+      "explanation": "Beim Hashing rechnet man die Position direkt aus (idealerweise in konstanter Zeit), während die binäre Suche mehrere Halbierungsschritte braucht."
+    },
+    {
+      "id": "ha03",
+      "question": "Was ist eine 'Kollision' beim Hashing?",
+      "options": [
+        "Zwei verschiedene Schlüssel werden auf dieselbe Position abgebildet.",
+        "Die Hashtabelle ist komplett leer.",
+        "Ein Schlüssel wird gelöscht.",
+        "Zwei Rechner senden gleichzeitig."
+      ],
+      "correct": [0],
+      "explanation": "Eine Kollision tritt auf, wenn die Hashfunktion für unterschiedliche Schlüssel dieselbe Position liefert."
+    },
+    {
+      "id": "ha04",
+      "question": "Ein einfaches Verfahren zur Kollisionsbehandlung ist das lineare Sondieren: h_i(s) = (h_0(s) + i) mod n. Was bedeutet das?",
+      "options": [
+        "Ist die berechnete Position belegt, probiert man der Reihe nach die nächste(n) Position(en).",
+        "Man löscht bei einer Kollision den vorhandenen Eintrag.",
+        "Man verdoppelt bei jeder Kollision die Tabellengröße.",
+        "Man ignoriert den neuen Schlüssel."
+      ],
+      "correct": [0],
+      "explanation": "Beim linearen Sondieren rückt man bei Belegung schrittweise (i = 1, 2, …) zur nächsten freien Position weiter."
+    },
+    {
+      "id": "ha05",
+      "question": "Warum sollte der Belegungsfaktor einer Hashtabelle nicht zu hoch werden (Richtwert: unter etwa 0,8)?",
+      "options": [
+        "Bei zu voller Tabelle häufen sich Kollisionen und die Zugriffe werden deutlich langsamer.",
+        "Weil die Tabelle sonst explodiert.",
+        "Weil dann keine Schlüssel mehr berechnet werden können.",
+        "Ein hoher Belegungsfaktor hat keinerlei Nachteile."
+      ],
+      "correct": [0],
+      "explanation": "Je voller die Tabelle, desto mehr Kollisionen; die Suche kann dann sogar schlechter werden als die binäre Suche."
+    },
+    {
+      "id": "ha06",
+      "question": "Wird die Hashfunktion nur beim Einfügen oder auch beim Suchen verwendet?",
+      "options": [
+        "Bei beidem – dieselbe Funktion bestimmt die Position zum Einfügen UND zum Nachschlagen.",
+        "Nur beim Einfügen.",
+        "Nur beim Suchen.",
+        "Nur beim Löschen."
+      ],
+      "correct": [0],
+      "explanation": "Dieselbe Hashfunktion liefert die Position sowohl beim Speichern als auch beim späteren Nachschlagen des Schlüssels."
+    },
+    {
+      "id": "ha07",
+      "question": "Warum empfiehlt das Kapitel, bei h(s) = s mod n für n eine Primzahl zu wählen?",
+      "options": [
+        "Eine Primzahl entkoppelt die Positionen von Mustern im Dezimal-/Binärsystem und verteilt die Schlüssel gleichmäßiger.",
+        "Primzahlen machen die Tabelle kleiner.",
+        "Nur mit Primzahlen sind Kollisionen unmöglich.",
+        "Primzahlen sind schneller zu berechnen."
+      ],
+      "correct": [0],
+      "explanation": "Ein Primzahl-Divisor vermeidet systematische Häufungen (etwa bei Vielfachen von 10 oder Zweierpotenzen) und streut die Schlüssel besser."
+    },
+    {
+      "id": "ha08",
+      "question": "Berechne die Position für den Schlüssel 27 in einer Tabelle mit h(s) = s mod 10.",
+      "options": [
+        "Position 7.",
+        "Position 2.",
+        "Position 27.",
+        "Position 0."
+      ],
+      "correct": [0],
+      "explanation": "27 mod 10 = 7, also landet der Schlüssel auf Position 7."
+    },
+    {
+      "id": "ha09",
+      "question": "Welche Aussagen zum Vergleich 'Hash-Zugriff' vs. 'geordnete (binäre) Suche' sind korrekt?",
+      "options": [
+        "Hashing berechnet die Position direkt, ohne Vergleiche mit anderen Elementen.",
+        "Binäre Suche benötigt sortierte Daten, Hashing nicht.",
+        "Eine überfüllte Hashtabelle kann langsamer werden als binäre Suche.",
+        "Hashing liefert die Elemente stets in sortierter Reihenfolge."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Hashing rechnet die Position direkt und braucht keine Sortierung; bei zu hoher Belegung kann es aber langsamer als binäre Suche werden. Sortiert liefert es die Daten nicht."
+    },
+    {
+      "id": "ha10",
+      "question": "Wovon hängt die benötigte Größe der Hashtabelle grundsätzlich ab?",
+      "options": [
+        "Vom Wertebereich der Hashfunktion (z. B. mod 10 → 10 Positionen).",
+        "Von der Farbe der Daten.",
+        "Von der Uhrzeit.",
+        "Ausschließlich von der Rechnergeschwindigkeit."
+      ],
+      "correct": [0],
+      "explanation": "Der Wertebereich der Hashfunktion legt die Zahl der möglichen Positionen und damit die Tabellengröße fest (mod n → n Plätze)."
+    },
+    {
+      "id": "ha11",
+      "question": "In welchen Anwendungen wird Hashing typischerweise eingesetzt?",
+      "options": [
+        "In Datenbanken und Wörterbüchern (schnelles Nachschlagen).",
+        "In der Speicherverwaltung von Betriebssystemen.",
+        "In Echtzeitsystemen mit garantiert kurzen Zugriffszeiten.",
+        "Ausschließlich zum Sortieren großer Zahlenmengen."
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Hashing ermöglicht schnellen, oft konstanten Zugriff – nützlich für Datenbanken, Wörterbücher, Speicherverwaltung und Echtzeitsysteme. Zum reinen Sortieren ist es nicht gedacht."
+    },
+    {
+      "id": "ha12",
+      "question": "Warum kann ein Computer keine 'echten' Zufallszahlen erzeugen?",
+      "options": [
+        "Er arbeitet deterministisch; gleiche Ausgangswerte führen immer zur gleichen Berechnung.",
+        "Weil ihm dafür der Speicher fehlt.",
+        "Weil Zufallszahlen verboten sind.",
+        "Weil er zu langsam rechnet."
+      ],
+      "correct": [0],
+      "explanation": "Ein Computer ist deterministisch: Aus demselben Startwert entsteht immer dieselbe Folge. Deshalb spricht man von PSEUDO-Zufallszahlen."
+    },
+    {
+      "id": "ha13",
+      "question": "Ein linearer Kongruenzgenerator berechnet Z(i) = (Z(i-1)·a + c) mod m. Welche Eigenschaften hat er?",
+      "options": [
+        "Er ist deterministisch: Gleicher Startwert (Seed) liefert dieselbe Zahlenfolge.",
+        "Die erzeugte Folge ist letztlich periodisch (sie wiederholt sich irgendwann).",
+        "Er erzeugt garantiert echten, physikalischen Zufall.",
+        "Er benötigt keinerlei Startwert."
+      ],
+      "correct": [0, 1],
+      "explanation": "Der Generator ist deterministisch und zyklisch (periodisch). Echten Zufall liefert er nicht; er braucht einen Startwert (Seed)."
+    },
+    {
+      "id": "ha14",
+      "question": "Warum starten Spiele ihren Pseudozufallsgenerator oft mit einem wechselnden Startwert (z. B. der aktuellen Uhrzeit)?",
+      "options": [
+        "Damit nicht bei jedem Programmstart exakt dieselbe Zahlenfolge (und damit derselbe Spielverlauf) entsteht.",
+        "Damit der Generator langsamer wird.",
+        "Weil die Uhrzeit die einzig erlaubte Zahl ist.",
+        "Um Kollisionen in der Hashtabelle zu vermeiden."
+      ],
+      "correct": [0],
+      "explanation": "Ein variabler Seed (z. B. die Zeit) sorgt dafür, dass jede Sitzung eine andere Folge erhält, obwohl der Generator deterministisch ist."
+    },
+    {
+      "id": "ha15",
+      "question": "Beim Monte-Carlo-Verfahren (z. B. Schätzung von π durch zufälliges Auswerfen von Punkten) gilt:",
+      "options": [
+        "Man nähert ein Ergebnis über viele Zufallsstichproben an.",
+        "Das Verfahren liefert oft gerade in hochdimensionalen Problemen praktikable Näherungen.",
+        "Es liefert immer das mathematisch exakte Ergebnis in einem Schritt.",
+        "Es kommt ganz ohne Zufallszahlen aus."
+      ],
+      "correct": [0, 1],
+      "explanation": "Monte-Carlo schätzt Ergebnisse über zufällige Stichproben und ist besonders in hohen Dimensionen nützlich; exakt (in einem Schritt) ist es nicht und Zufallszahlen sind essenziell."
+    },
+    {
+      "id": "ha16",
+      "question": "Warum ist eine gute Kollisionsbehandlung wichtig, die potenziell ALLE Positionen erreichen kann?",
+      "options": [
+        "Sonst könnten freie Plätze unerreichbar bleiben und das Einfügen scheitern, obwohl noch Platz ist.",
+        "Damit die Tabelle sortiert bleibt.",
+        "Weil sonst der Belegungsfaktor sinkt.",
+        "Damit die Hashfunktion verschlüsselt."
+      ],
+      "correct": [0],
+      "explanation": "Erreicht das Sondierungsschema nicht alle Plätze, kann ein Schlüssel nicht untergebracht werden, obwohl noch freie Positionen existieren."
+    }
+  ]
+}

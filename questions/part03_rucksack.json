@@ -1,0 +1,210 @@
+{
+  "title": "Teil 3: Rucksackproblem & Dynamische Programmierung",
+  "description": "Rucksackproblem (Knapsack), Greedy vs. dynamische Programmierung, bottom-up vs. top-down, Grenzen (NP-Vollständigkeit). Fragen basieren auf Kapitel 3 von 'Abenteuer Informatik'.",
+  "questions": [
+    {
+      "id": "rp01",
+      "question": "Worum geht es beim Rucksackproblem?",
+      "options": [
+        "Einen Behälter begrenzter Größe so mit Objekten zu füllen, dass der Gesamtwert maximal wird.",
+        "Einen Rucksack möglichst leicht zu packen.",
+        "Alle Objekte in beliebiger Reihenfolge zu sortieren.",
+        "Den kürzesten Weg zwischen zwei Städten zu finden."
+      ],
+      "correct": [0],
+      "explanation": "Beim Rucksackproblem maximiert man den Wert der eingepackten Objekte, ohne die Kapazitätsgrenze zu überschreiten."
+    },
+    {
+      "id": "rp02",
+      "question": "Welche zwei Größen bestimmen beim Rucksackproblem die 'Problemgröße'?",
+      "options": [
+        "Die Kapazität des Behälters UND die Anzahl der verschiedenen Objektarten.",
+        "Nur die Farbe der Objekte.",
+        "Nur das Gewicht des leeren Rucksacks.",
+        "Die Anzahl der Personen, die packen."
+      ],
+      "correct": [0],
+      "explanation": "Sowohl die Behältergröße als auch die Zahl der Objekt-/Schatzarten gehen in die Problemgröße ein."
+    },
+    {
+      "id": "rp03",
+      "question": "Warum liefert eine gierige (Greedy-)Strategie beim Rucksackproblem nicht immer die optimale Lösung?",
+      "options": [
+        "Ein früh getroffenes 'bestes' Einzelstück kann verhindern, dass eine insgesamt wertvollere Kombination gepackt wird.",
+        "Greedy ist immer optimal, das Buch irrt sich.",
+        "Greedy braucht zu viel Speicher.",
+        "Greedy funktioniert nur bei sortierten Daten."
+      ],
+      "correct": [0],
+      "explanation": "Greedy trifft lokal beste Entscheidungen, die global suboptimal sein können (z. B. wenn 'billige' Ringe voreilig weggelassen werden)."
+    },
+    {
+      "id": "rp04",
+      "question": "Das Grundprinzip der dynamischen Programmierung ist:",
+      "options": [
+        "Alle kleineren Teilprobleme systematisch (bottom-up) lösen und deren optimale Ergebnisse für größere Probleme wiederverwenden.",
+        "So lange zufällig probieren, bis eine Lösung passt.",
+        "Nur das größte Teilproblem direkt lösen.",
+        "Jede Berechnung mehrfach von vorne beginnen."
+      ],
+      "correct": [0],
+      "explanation": "Dynamische Programmierung baut Lösungen aus optimal gelösten kleineren Teilproblemen zusammen und speichert Zwischenergebnisse."
+    },
+    {
+      "id": "rp05",
+      "question": "Wer gilt als Begründer der dynamischen Programmierung?",
+      "options": [
+        "Richard Bellman.",
+        "Alan Turing.",
+        "Edsger Dijkstra.",
+        "Tony Hoare."
+      ],
+      "correct": [0],
+      "explanation": "Die dynamische Programmierung geht auf Richard Bellman (1920–1984) zurück."
+    },
+    {
+      "id": "rp06",
+      "question": "Beim Füllen der DP-Tabelle für einen Behälter der Größe s und einen Schatz der Größe g mit Wert w vergleicht man:",
+      "options": [
+        "Den bisher besten Wert für Größe s mit (bester Wert für Größe s−g) + w und behält das Maximum.",
+        "Nur den Wert w mit Null.",
+        "Die Größe s mit der Anzahl aller Schätze.",
+        "Immer den kleineren der beiden Werte."
+      ],
+      "correct": [0],
+      "explanation": "Man entscheidet, ob das Hinzunehmen des Schatzes (Wert des Restplatzes s−g plus w) besser ist als der bisherige Eintrag, und übernimmt das Maximum."
+    },
+    {
+      "id": "rp07",
+      "question": "Muss der optimal gefüllte Behälter beim Rucksackproblem immer randvoll sein?",
+      "options": [
+        "Nein – manchmal bleibt ein Rest frei, weil kein passender Schatz den Wert weiter erhöht.",
+        "Ja, ein optimaler Behälter ist immer exakt voll.",
+        "Ja, sonst ist die Lösung ungültig.",
+        "Das hängt nur von der Farbe der Schätze ab."
+      ],
+      "correct": [0],
+      "explanation": "Der wertoptimale Behälter kann eine Lücke lassen (Beispiel: der Kompass passt nicht mehr rein, ohne den Wert zu steigern)."
+    },
+    {
+      "id": "rp08",
+      "question": "Warum wird die DP-Tabelle im Kapitel von Behältergröße 0 aufwärts gefüllt und immer nur eine Schatzart nach der anderen betrachtet?",
+      "options": [
+        "So baut man garantiert auf bereits optimal gelösten kleineren Fällen auf (bottom-up).",
+        "Damit die Tabelle bunter aussieht.",
+        "Weil größere Behälter zuerst gelöst werden müssen.",
+        "Um Zufallszahlen zu erzeugen."
+      ],
+      "correct": [0],
+      "explanation": "Bottom-up von Größe 0 an sichert, dass beim Berechnen eines Eintrags alle benötigten kleineren Einträge schon optimal vorliegen."
+    },
+    {
+      "id": "rp09",
+      "question": "Die dynamische Programmierung ähnelt welchem mathematischen Prinzip?",
+      "options": [
+        "Der vollständigen Induktion (Verankerung im einfachsten Fall, dann schrittweiser Aufbau).",
+        "Der Primfaktorzerlegung.",
+        "Der Verschlüsselung.",
+        "Dem Zufallsexperiment."
+      ],
+      "correct": [0],
+      "explanation": "Wie bei der Induktion gibt es eine Verankerung (z. B. Behälter der Größe 0 hat Wert 0) und einen schrittweisen Aufbau auf kleineren Fällen."
+    },
+    {
+      "id": "rp10",
+      "question": "Für welche Art von Rucksackproblemen funktioniert das im Kapitel gezeigte DP-Verfahren zuverlässig?",
+      "options": [
+        "Für ganzzahlige, 'lineare' Größenangaben.",
+        "Für beliebige reelle 3D-Formen mit fließenden Größen.",
+        "Nur für Probleme ganz ohne Größenbeschränkung.",
+        "Nur für Probleme mit genau einem Objekt."
+      ],
+      "correct": [0],
+      "explanation": "Die Tabelle setzt ganzzahlige/lineare Größen voraus. Realistische 3D-Formen oder nicht-ganzzahlige Größen sprengen dieses Modell."
+    },
+    {
+      "id": "rp11",
+      "question": "Das allgemeine Rucksackproblem (echte 3D-Objekte, begrenzter Vorrat) gehört zu welcher Problemklasse?",
+      "options": [
+        "Zu den NP-vollständigen Problemen.",
+        "Zu den trivial in O(1) lösbaren Problemen.",
+        "Zu den nicht entscheidbaren Problemen.",
+        "Zu den rein logarithmischen Problemen."
+      ],
+      "correct": [0],
+      "explanation": "Das allgemeine Rucksackproblem ist NP-vollständig, ähnlich wie das Problem des Handlungsreisenden."
+    },
+    {
+      "id": "rp12",
+      "question": "Welche Aussage über NP-vollständige Probleme wie das allgemeine Rucksackproblem und TSP ist korrekt?",
+      "options": [
+        "Fände man für EINES ein schnelles (polynomielles) Verfahren, wären alle schnell lösbar.",
+        "Jedes NP-vollständige Problem hat bereits einen bekannten schnellen Algorithmus.",
+        "NP-vollständige Probleme sind grundsätzlich unentscheidbar.",
+        "Sie lassen sich immer in konstanter Zeit lösen."
+      ],
+      "correct": [0],
+      "explanation": "Die NP-vollständigen Probleme sind untereinander verwandt: Ein polynomielles Verfahren für eines würde alle lösen (P = NP). Ein solches ist nicht bekannt."
+    },
+    {
+      "id": "rp13",
+      "question": "Worin unterscheiden sich der 'top-down'- und der 'bottom-up'-Ansatz?",
+      "options": [
+        "Top-down (teile und herrsche) zerlegt das große Problem in kleinere; bottom-up (DP) beginnt bei den kleinsten Fällen und baut auf.",
+        "Top-down ist immer schneller als bottom-up.",
+        "Beide bezeichnen exakt dasselbe Vorgehen.",
+        "Bottom-up funktioniert nur für Sortierprobleme."
+      ],
+      "correct": [0],
+      "explanation": "Top-down geht vom Ganzen zu den Teilen (Divide-and-Conquer), bottom-up von den Teilen zum Ganzen (dynamische Programmierung)."
+    },
+    {
+      "id": "rp14",
+      "question": "Warum betrachtet die dynamische Programmierung stets auch den Behälter der Größe 0 (und der Größe 1)?",
+      "options": [
+        "Diese kleinsten Fälle dienen als sichere Verankerung, auf die alle größeren Berechnungen aufbauen.",
+        "Weil ein leerer Behälter den höchsten Wert hat.",
+        "Um Speicher zu sparen.",
+        "Aus reiner Gewohnheit ohne inhaltlichen Grund."
+      ],
+      "correct": [0],
+      "explanation": "Der triviale Fall (Größe 0 → Wert 0) ist die Verankerung; von dort aus werden größere Behälter korrekt aufgebaut."
+    },
+    {
+      "id": "rp15",
+      "question": "Welche der folgenden Probleme werden im Kapitel als 'schwer' (kombinatorisch/NP-vollständig) eingeordnet?",
+      "options": [
+        "Das allgemeine Rucksackproblem.",
+        "Das Problem des Handlungsreisenden (TSP).",
+        "Das Sortieren von n Karten mit Quicksort.",
+        "Das Finden des kürzesten Weges mit Dijkstra."
+      ],
+      "correct": [0, 1],
+      "explanation": "Rucksack und TSP sind NP-vollständig. Sortieren (O(n·log n)) und Dijkstra (O(n²) bzw. n·log n) sind dagegen effizient/praktisch lösbar."
+    },
+    {
+      "id": "rp16",
+      "question": "Angenommen, ein Behälter hat Kapazität 5. Schatz A hat Größe 3 und Wert 11, Schatz B hat Größe 5 und Wert 24. Es darf jede Art höchstens einmal hinein. Welcher Wert ist maximal erreichbar?",
+      "options": [
+        "24 (nur Schatz B passt, A und B zusammen bräuchten Größe 8).",
+        "35 (A und B zusammen).",
+        "11 (nur Schatz A).",
+        "48 (B doppelt)."
+      ],
+      "correct": [0],
+      "explanation": "A+B bräuchten Größe 3+5 = 8 > 5, passen also nicht zusammen. Allein bringt B (24) mehr als A (11); Maximum ist 24."
+    },
+    {
+      "id": "rp17",
+      "question": "Ein Vorteil der dynamischen Programmierung gegenüber reinem Ausprobieren aller Kombinationen ist:",
+      "options": [
+        "Jedes Teilproblem wird nur einmal gelöst und wiederverwendet, statt es immer wieder neu zu berechnen.",
+        "Sie liefert nur ungefähre Ergebnisse.",
+        "Sie benötigt keinerlei Speicher.",
+        "Sie funktioniert ohne jede Fallunterscheidung."
+      ],
+      "correct": [0],
+      "explanation": "Durch das Speichern und Wiederverwenden optimaler Zwischenergebnisse vermeidet DP die exponentielle Mehrfachberechnung des Brute-Force."
+    }
+  ]
+}
